@@ -1,0 +1,103 @@
+body{
+  margin:0;
+  padding:0;
+  list-style: none;
+  font-family: 'Noto Sans TC','Roboto' ,sans-serif;
+}
+
+#side{
+  background-color: #F4E245;
+  width: 100%;
+  height: 100vh;
+}
+
+#becontent{
+  background-color: blanchedalmond;
+  width: 100%;
+  height: 100vh;
+}
+
+#profile{
+  background-color: #F4E245;
+  height: 95vh;
+}
+
+#content{
+  background-color: blanchedalmond;
+  height: 95vh;
+  overflow-y: scroll;
+}
+
+footer{
+  background-color: #000051;
+  color:#ffffff;
+  text-align: center;
+}
+
+.box{
+  width: 250px;
+  height: 220px;
+  border-radius: 15px;
+}
+
+
+#portfolio .box a{
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+#portfolio .box a span{
+  display: inline-block;
+  width: 100%;
+  background-color: #010127;
+  line-height: 100%;
+  padding: 0.5rem 0.1rem;
+  text-align: center;
+  color:#ffffff;
+  font-size: 1rem;
+  transition: all 1s ease-in-out;
+  margin-top: 40%;
+  /* transform: translate(-150%); */
+  font-weight: bolder;
+  opacity: 0;
+
+}
+
+#portfolio .box1{
+  background:url(../img/portfolio/invoice.png) no-repeat;
+  background-size: cover;
+  transition: all 1s ease-in-out;
+}
+
+#portfolio .box1:hover{
+  filter:saturate(200%);
+}
+
+#portfolio .box2{
+  background:url(../img/portfolio/invoice.png) no-repeat;
+  background-size: cover;
+  transition: all 1s ease-in-out;
+}
+
+#portfolio .box2:hover{
+  filter:saturate(200%);
+}
+
+
+#content::-webkit-scrollbar {
+  width: 9px;               /* width of the entire scrollbar */
+}
+#content::-webkit-scrollbar-track {
+  background: #F4E245;        /* color of the tracking area */
+}
+#content::-webkit-scrollbar-thumb {
+  background-color: #000051;    /* color of the scroll thumb */
+  border-radius: 15px;       /* roundness of the scroll thumb */
+  border: 2px solid #F4E245;  /* creates padding around scroll thumb */
+}
+
+
+
+
+
+
