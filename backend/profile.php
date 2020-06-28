@@ -150,7 +150,6 @@ function save(){
     data['live'] = document.querySelector("#profile_data").querySelector("#live").value;
     data['intr'] = document.querySelector("#profile_data").querySelector("#intr").value;
     $.post("api/profile.php",data,function(res){
-        console.log(res);
         if(res >= 1){
             alert("更新成功!");
             location.reload();
