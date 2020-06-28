@@ -1,3 +1,4 @@
+<?php include_once "base.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,43 +21,47 @@
 
   <div class="container">
     <div class="row">
+      <div id="side" class="col-3 d-flex flex-column justify-content-start align-items-center">
+        <h1 class="mb-3 mt-5">歡迎，<?= $_SESSION['username'] ?></h1>
+        <div class="btn-group-vertical ">
+          <button type="button" class="btn">個人資料管理</button>
+          <button type="button" class="btn">個人圖片管理</button>
+          <button type="button" class="btn">個人連結管理</button>
+          <button type="button" class="btn">個人學歷管理</button>
+          <button type="button" class="btn">工作經歷管理</button>
+          <div class="btn-group dropright">
+            <button id="btnGroupVerticalDrop2" type="button" class="btn dropdown-toggle" data-toggle="dropdown">工作技能管理</button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#">前端技能</a>
+              <a class="dropdown-item" href="#">後端技能</a>
+              <a class="dropdown-item" href="#">應用軟體</a>
+              <a class="dropdown-item" href="#">語言能力</a>
+              <a class="dropdown-item" href="#">專業證照</a>
+            </div>
+          </div>
+          <button type="button" class="btn">履歷表管理</button>
+        </div>
+        <button class="btn mt-5" onclick="location.replace('api/logout.php')">登出</button>
+      </div>
 
-      <div id="side" class="col-4">
-
-      <div class="bd-example">
-  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-    <button type="button" class="btn btn-secondary">Button</button>
-    <button type="button" class="btn btn-secondary">Button</button>
-    <button type="button" class="btn btn-secondary">Button</button>
-    <button type="button" class="btn btn-secondary">Button</button>
-    <div class="btn-group" role="group">
-      <button id="btnGroupVerticalDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown
-      </button>
-      <div class="dropdown-menu" aria-labelledby="btnGroupVerticalDrop2">
-        <a class="dropdown-item" href="#">Dropdown link</a>
-        <a class="dropdown-item" href="#">Dropdown link</a>
+      <div id="becontent" class="col-9 px-5">
+        <div class="container">
+          <div class="row justify-content-center align-items-center ">
+            <?php
+            include "backend/profile.php"
+            ?>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 
 
-      </div>
+  <script>
 
 
-
-
-      <div id="becontent" class="col-8 px-5">
-        456
-      </div>
-    </div>
-  </div>
-
-
-  </div>
-
+  </script>
 
 </body>
 

@@ -1,51 +1,199 @@
 body{
   margin:0;
   padding:0;
-  list-style: none;
-  font-family: 'Noto Sans TC','Roboto' ,sans-serif;
+  font-family: 'Josefin Sans','Noto Sans TC','Caveat','Lobster','Roboto' ,sans-serif;
+  background-color: #000051;
+  overflow: hidden;
 }
 
-#side{
-  background-color: #F4E245;
-  width: 100%;
-  height: 100vh;
+#login{
+  position: absolute;
+  right:-4.8%;
+  bottom:5%;
+  transition: all 0.3s linear;
+}
+
+#login:hover{
+  right:-4.5%;
+}
+
+#login a{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  font-size: 1rem;
+  color:#000041;
+  padding-left:0.3rem;
+  text-decoration: none;
+  transition: all 0.1s linear;
+}
+
+#login a:hover{
+  color:#0000ff;
+  padding-left:0.5rem;
 }
 
 #becontent{
   background-color: blanchedalmond;
   width: 100%;
   height: 100vh;
+  overflow: scroll;
 }
 
-#profile{
+#profile,#side{
   background-color: #F4E245;
-  height: 95vh;
+  height: 100vh;
+  color: #00005c;
 }
+
+#profile .contact ul li{
+  list-style: none;
+} 
+
+#profile h4{
+  color:#ff019e;
+  border-bottom: 0.5px solid #ff019e;
+  border-width: 60%;
+} 
+
+#profile .link a{
+  font-size: 2rem;
+  color:#030e4e;
+}
+
+#profile .link a:hover{
+  color:#1f1fce;
+}
+
+#profile .introduction img{
+  margin-left: 50%;
+  transform: translate(-50%);
+}
+
+#profile .introduction {
+  padding: 0 0.5rem;
+}
+
+#profile .introduction small{
+  font-family: 'Caveat', cursive;
+}
+
+#profile h1{
+  margin-top:0.5rem;
+  margin-bottom: 0.2rem;
+  color:#1f1fce;
+}
+
+#footer{
+  background-color: #F4E245;
+  color:#000000;
+  text-align: left;
+  padding-left: 5%;
+  font-size:0.5rem;
+  width: 100%;
+}
+
 
 #content{
   background-color: blanchedalmond;
-  height: 95vh;
+  height: 100vh;
   overflow-y: scroll;
+  color:#00005c ;
 }
 
-footer{
-  background-color: #000051;
-  color:#ffffff;
-  text-align: center;
+#content h1{
+  font-size: 0.7rem;
+  color:#ff019e;
+  border-bottom: 0.5px solid #ff019e;
 }
 
-.box{
+#content ul {
+  padding-left:1rem;
+}
+
+#content ul li{
+  list-style: none;
+    
+}
+
+#content #work .com:before,#content #work .com2:before{
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: #00005c;
+  border-radius: 50%;
+  margin-right:5px;
+}
+
+#content #work .com:after{
+  content:"訂單登打、電話接聽、出貨、請款、每月報表製作、每日業績結算";
+  font-size: 0.4rem;
+  display: block;
+  margin-left: 10px;
+  color: #5e5c5c;
+}
+
+#content #work .com2:after{
+  content:"營業稅申報、傳票歸檔、報表整理、主管交代事項";
+  font-size: 0.4rem;
+  display: block;
+  margin-left: 10px;
+  color: #5e5c5c;
+}
+
+#content #work .dot:after{
+  content:"";
+  display: inline-block;
+  width: 1px;
+  height: 40px;
+  background-color: #00005c;
+  position: absolute;
+  left:12.8%
+}
+
+#content #work .year{
+  font-size: 0.4rem;
+}
+
+#content #work ul li:after{
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  background-color: #00005c;
+  position: absolute;
+  
+}
+
+#content #skill h5{
+  font-size: 0.5rem;
+  padding-left: 1rem;
+  color: #1f1fce;
+}
+
+#content #skill .front .value{
+  font-size: 0.4rem;
+  margin-left: 40%;
+  transform: translate(-40%);
+  color: #4b3d46;
+}
+
+#portfolio .box{
   width: 250px;
   height: 220px;
   border-radius: 15px;
 }
-
 
 #portfolio .box a{
   display: inline-block;
   width: 100%;
   height: 100%;
 }
+
 #portfolio .box a span{
   display: inline-block;
   width: 100%;
@@ -83,21 +231,38 @@ footer{
   filter:saturate(200%);
 }
 
-
-#content::-webkit-scrollbar {
+#content::-webkit-scrollbar,#becontent::-webkit-scrollbar {
   width: 9px;               /* width of the entire scrollbar */
 }
+
 #content::-webkit-scrollbar-track {
   background: #F4E245;        /* color of the tracking area */
 }
-#content::-webkit-scrollbar-thumb {
+
+#content::-webkit-scrollbar-thumb,#becontent::-webkit-scrollbar-thumb {
   background-color: #000051;    /* color of the scroll thumb */
   border-radius: 15px;       /* roundness of the scroll thumb */
   border: 2px solid #F4E245;  /* creates padding around scroll thumb */
 }
 
+#side .btn-group-vertical button{
+  border-radius: 15px;
+  border: 1px solid #000051;
+  margin: 0.5rem auto;
+  transition: all 0.5s linear;
+}
 
+#side .btn-group-vertical button:hover{
+  background-color: #000051;
+  color: #ffffff;
+  transform: translate(5%);
+}
 
+#side h1{
+  font-size: 2rem;
+}
 
-
+#backend_profile .form-check-input{
+  top:20%;
+}
 
