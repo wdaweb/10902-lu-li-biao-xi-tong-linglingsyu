@@ -96,12 +96,11 @@ body{
   width: 100%;
 }
 
-
 #content{
   background-color: blanchedalmond;
   height: 100vh;
   overflow-y: scroll;
-  color:#00005c ;
+  color:#00005c !important;
 }
 
 #content h1{
@@ -122,8 +121,13 @@ body{
   font-family: 'Noto Sans';
 }
 
+.table{
+  color:#00005c !important;
+}
+
+
 #work ul li:hover,#study ul li:hover{
-  color:rgb(94, 68, 182);
+  color:rgb(255, 123, 0);
 }
 
 #work ul li:before,#study ul li:before{
