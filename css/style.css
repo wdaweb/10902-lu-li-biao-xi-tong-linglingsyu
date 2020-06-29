@@ -8,13 +8,14 @@ body{
 
 #login{
   position: absolute;
-  right:-4.8%;
-  bottom:5%;
+  right:0;
+  bottom:3%;
+  transform: translate(60%);
   transition: all 0.3s linear;
 }
 
 #login:hover{
-  right:-4.5%;
+  transform: translate(70%);
 }
 
 #login a{
@@ -92,7 +93,6 @@ body{
   color:#000000;
   text-align: left;
   padding-left: 5%;
-  font-size:0.5rem;
   width: 100%;
 }
 
@@ -105,7 +105,7 @@ body{
 }
 
 #content h1{
-  font-size: 0.7rem;
+  font-size: 1.5rem;
   color:#ff019e;
   border-bottom: 0.5px solid #ff019e;
 }
@@ -115,62 +115,56 @@ body{
 }
 
 #content ul li{
-  list-style: none;
-    
+  list-style: none;  
 }
 
-#content #work .com:before,#content #work .com2:before{
+#content .year{
+  font-family: 'Noto Sans';
+}
+
+#work ul li:hover,#study ul li:hover{
+  color:rgb(94, 68, 182);
+}
+
+#work ul li:before,#study ul li:before{
   content: "";
   display: inline-block;
-  width: 5px;
-  height: 5px;
-  background-color: #00005c;
-  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  background-color: #000041;
+  transform: rotate(45deg);
+  border-radius: 25%;
   margin-right:5px;
 }
 
-#content #work .com:after{
-  content:"訂單登打、電話接聽、出貨、請款、每月報表製作、每日業績結算";
-  font-size: 0.4rem;
-  display: block;
-  margin-left: 10px;
-  color: #5e5c5c;
+#work ul li:hover:before,#study ul li:hover:before{
+  list-style: circle;
+  animation: circle 2s linear infinite alternate;
+  z-index: 999;
+  border:0.5px solid #00ffea;
+
 }
 
-#content #work .com2:after{
-  content:"營業稅申報、傳票歸檔、報表整理、主管交代事項";
-  font-size: 0.4rem;
-  display: block;
-  margin-left: 10px;
-  color: #5e5c5c;
+@keyframes circle{
+  form{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
 }
 
-#content #work .dot:after{
+#work ul li:after,#study ul li:after{
   content:"";
-  display: inline-block;
-  width: 1px;
-  height: 40px;
-  background-color: #00005c;
   position: absolute;
-  left:12.8%
-}
-
-#content #work .year{
-  font-size: 0.4rem;
-}
-
-#content #work ul li:after{
-  content: "";
-  display: inline-block;
-  width: 1px;
-  height: 10px;
-  background-color: #00005c;
-  position: absolute;
-  
+  border-left: 1px solid #000041;
+  top: 6px;
+  bottom: 0px;
+  right:96%;
+  z-index: 1;
 }
 
 #content #skill h5{
-  font-size: 0.5rem;
   padding-left: 1rem;
   color: #1f1fce;
 }
@@ -205,7 +199,6 @@ body{
   font-size: 1rem;
   transition: all 1s ease-in-out;
   margin-top: 40%;
-  /* transform: translate(-150%); */
   font-weight: bolder;
   opacity: 0;
 
