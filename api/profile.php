@@ -1,7 +1,7 @@
 <?php
 
 include_once "../base.php";
-$db = new DB("profile");
+$db = new DB("resume_profile");
 // if(!empty($_POST)){
 //   print_r($_POST);
 // }else{

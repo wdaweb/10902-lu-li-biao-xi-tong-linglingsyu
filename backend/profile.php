@@ -15,7 +15,7 @@
     <?php
     include_once "base.php";
     $userid = $_SESSION['userid'];
-    $db = new DB("profile");
+    $db = new DB("resume_profile");
     $row = $db->find($userid);
 
     if(empty($row)){
@@ -61,11 +61,11 @@
                 <div class="input-group-prepend">
                     <div class="input-group-text inline-block" id="telshow">
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="telshow" id="phnshow" value="0" >
+                            <input class="form-check-input " type="radio" name="telshow[]"  value="0" >
                             <label class="form-check-label" for="phnshow">不顯示</label>
                         </div>
                         <div class="form-check ml-1">
-                            <input class="form-check-input " type="radio" name="telshow" id="phshow" value="1" checked>
+                            <input class="form-check-input " type="radio" name="telshow[]"  value="1" checked>
                             <label class="form-check-label" for="phshow">顯示</label>
                         </div>
                     </div>
@@ -86,11 +86,11 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="lineshow" id="enshow" value="0" checked>
+                            <input class="form-check-input " type="radio" name="lineshow[]" value="0" checked>
                             <label class="form-check-label" for="enshow">不顯示</label>
                         </div>
                         <div class="form-check ml-1">
-                            <input class="form-check-input " type="radio" name="lineshow" id="eshow" value="1">
+                            <input class="form-check-input " type="radio" name="lineshow[]"  value="1">
                             <label class="form-check-label" for="eshow">顯示</label>
                         </div>
                     </span>
@@ -145,15 +145,18 @@ function save(){
     data['name'] = document.querySelector("#profile_data").querySelector("#name").value;
     data['enname'] = document.querySelector("#profile_data").querySelector("#enname").value;
     data['tel'] = document.querySelector("#profile_data").querySelector("#tel").value;
+    // data['telshow'] = document.getElementsByName("telshow");
     data['email'] = document.querySelector("#profile_data").querySelector("#email").value;
     data['lineid'] = document.querySelector("#profile_data").querySelector("#lineid").value;
     data['live'] = document.querySelector("#profile_data").querySelector("#live").value;
     data['intr'] = document.querySelector("#profile_data").querySelector("#intr").value;
     $.post("api/profile.php",data,function(res){
         if(res >= 1){
+            // console.log(res);
             alert("更新成功!");
             location.reload();
         }else{
+            // console.log(res);
             alert("更動失敗!");
         }
     })

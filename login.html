@@ -102,7 +102,6 @@
         alert("帳號或密碼錯誤，請重新輸入");
       } else {
         $.get("api/chklogin.php", {acc,pw}, function(res) {
-          console.log(res);
           if (res == 1) {
             location.href = "main.php";
           } else {

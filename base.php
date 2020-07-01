@@ -1,9 +1,6 @@
 <?php
 
 session_start();
-// $db = new DB("profile");
-// $data = ['id'=>'1','name'=>'許瑞玲','enname'=>'Elsa Syuuuuu'];
-// $row = $db->save($data);
 
 class DB{
   private $dsn  = "mysql:host=localhost;charset=utf8;dbname=resume";

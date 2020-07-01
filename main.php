@@ -24,19 +24,19 @@
       <div id="side" class="col-3 d-flex flex-column justify-content-start align-items-center">
         <h1 class="mb-3 mt-5">歡迎，<?= $_SESSION['username'] ?></h1>
         <div class="btn-group-vertical ">
-          <button type="button" class="btn">個人資料管理</button>
-          <button type="button" class="btn">個人圖片管理</button>
-          <button type="button" class="btn">個人連結管理</button>
-          <button type="button" class="btn">個人學歷管理</button>
-          <button type="button" class="btn">工作經歷管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=profile'">個人資料管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=picture'">個人圖片管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=link'">個人連結管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=study'">個人學歷管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=work'">工作經歷管理</button>
           <div class="btn-group dropright">
             <button id="btnGroupVerticalDrop2" type="button" class="btn dropdown-toggle" data-toggle="dropdown">工作技能管理</button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">前端技能</a>
-              <a class="dropdown-item" href="#">後端技能</a>
-              <a class="dropdown-item" href="#">應用軟體</a>
-              <a class="dropdown-item" href="#">語言能力</a>
-              <a class="dropdown-item" href="#">專業證照</a>
+              <a class="dropdown-item" href="?do=front">前端技能</a>
+              <a class="dropdown-item" href="?do=backend">後端技能</a>
+              <a class="dropdown-item" href="?do=software">應用軟體</a>
+              <a class="dropdown-item" href="?do=lan">語言能力</a>
+              <a class="dropdown-item" href="?do=Cert">專業證照</a>
             </div>
           </div>
           <button type="button" class="btn">履歷表管理</button>
@@ -48,7 +48,15 @@
         <div class="container">
           <div class="row justify-content-center align-items-center ">
             <?php
-            include "backend/profile.php"
+            $userid = $_SESSION['userid'];
+            $do = (!empty($_GET['do'])) ? $_GET['do'] : 'profile';
+            $file = 'backend/' . $do . ".php";
+            if (file_exists($file)) {
+              include $file;
+            } else {
+              include "backend/profile.php";
+            }
+
             ?>
           </div>
         </div>

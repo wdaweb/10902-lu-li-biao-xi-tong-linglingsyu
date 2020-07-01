@@ -2,7 +2,7 @@
 
 include_once "../base.php";
 
-$db = new DB("user");
+$db = new DB("resume_user");
 
 $chk = $db->find(['acc' => $_GET["acc"],'pw'=> $_GET["pw"] ]);
 
