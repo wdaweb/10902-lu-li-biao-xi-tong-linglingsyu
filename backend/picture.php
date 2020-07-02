@@ -9,49 +9,35 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
+    <?php
 
-      <td scope="row">1</td>
-      <td><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
-      <td>/img/123.png</td>
-      <td>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="sh" id="exampleRadios1" value="1" >
-          <label class="form-check-label" for="exampleRadios1">
-            顯示
-          </label>
-        </div>
-      </td>
-      <td>刪除</td>
-    </tr>
-    <!-- <tr>
-      <td scope="row">2</td>
-      <td><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
-      <td>/img/123.png</td>
-      <td>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="show[]" id="pic1" value="" >
-          <label class="form-check-label" for="pic1">
-            顯示
-          </label>
-        </div>
-      <td>刪除</td>
-      </td>
-    </tr>
+    // $$db = new DB("resume_picture");
+    // $rows = $db->all();
+    // foreach($rows as $row){
+    //   echo "<tr>";
+    //   foreach($row as $value){
+    //     $num++;
+    //     echo "<td>".$num."</td>";
+    //     echo "<td><img src='".$row[0]."'>" ."</td>"
+
+
+    //   }
+    //   echo "</tr>";
+    // }
+    
+    ?>
     <tr>
-      <td scope="row">3</td>
-      <td><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
-      <td>/img/123.png</td>
+      <td scope="row">1</td>
+      <td class="pic"><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
+      <td class="path">/img/123.png</td>
       <td>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="show[]" id="pic2" value="" >
-          <label class="form-check-label" for="pic2">
-            顯示
-          </label>
+          <input class="form-check-input" type="radio" name="sh" id="sh" >
+          <label class="form-check-label" for="sh">顯示</label>
         </div>
-      <td>刪除</td>
       </td>
-    </tr> -->
+      <td class="del">刪除</td>
+    </tr>
   </tbody>
 </table>
 
@@ -108,13 +94,22 @@
       cache: false,
       processData: false,
       success: function(res) {
-        console.log(res);
+        // let tbody = document.getElementsByTagName("tbody").innerHTML
+        // tbody = tbody+`
+        //  <tr>
+        //   <td scope="row">1</td>
+        //   <td><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
+        //   <td>/img/123.png</td>
+        //   <td>
+        //     <div class="form-check">
+        //       <input class="form-check-input" type="radio" name="sh" id="sh" >
+        //       <label class="form-check-label" for="sh">顯示</label>
+        //     </div>
+        //   </td>
+        //   <td class="del">刪除</td>
+        // </tr>`
         location.reload();
-      },
-      error: function(res) {
-        console.log(res);
-        console.log("error")
-      }
+      } 
     });
   }
 </script>

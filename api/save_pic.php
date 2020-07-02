@@ -29,6 +29,12 @@ if (!empty($_FILES[$key[0]]["tmp_name"])) {
   }else{
     echo 0;
   }
+  // $row = $db->find[$data];
+  // if(!empty($row)){
+  //   print_r($row);
+  // }else{
+  //   echo 0;
+  // }
 }
 
 ?>
