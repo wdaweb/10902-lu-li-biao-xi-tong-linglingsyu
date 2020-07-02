@@ -46,7 +46,7 @@
 
       <div id="becontent" class="col-9 px-5">
         <div class="container">
-          <div class="row justify-content-center align-items-center ">
+          <div class="row justify-content-center align-items-center mt-5">
             <?php
             $userid = $_SESSION['userid'];
             $do = (!empty($_GET['do'])) ? $_GET['do'] : 'profile';

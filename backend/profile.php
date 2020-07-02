@@ -35,7 +35,7 @@
     ?>
 
     <div id="backend_profile">
-        <h1>履歷表管理後台 - 個人資料</h1>
+        <h3>履歷表管理後台 - 個人資料</h3>
         <form id="profile_data">
             <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>">
             <input type="hidden" name="userid" id="userid" value="<?= $userid ?>">
@@ -104,23 +104,23 @@
                     <option value="台北市" <?= $row['live']=="台北市" ? " selected " : ""  ?> >台北市</option>
                     <option value="新北市" <?= $row['live']=="新北市" ? " selected " : ""  ?> >新北市</option>
                     <option value="桃園市" <?= $row['live']=="桃園市" ? " selected " : ""  ?> >桃園市</option>
-                    <option value="新竹縣市">新竹縣市</option>
-                    <option value="苗栗縣">苗栗縣</option>
-                    <option value="台中市">台中市</option>
-                    <option value="彰化縣">彰化縣</option>
-                    <option value="雲林縣">雲林縣</option>
-                    <option value="嘉義縣市">嘉義縣市</option>
-                    <option value="台南市">台南市</option>
-                    <option value="高雄市">高雄市</option>
-                    <option value="屏東縣">屏東縣</option>
-                    <option value="宜蘭縣">宜蘭縣</option>
-                    <option value="花蓮縣">花蓮縣</option>
-                    <option value="台東縣">台東縣</option>
-                    <option value="連江縣">連江縣</option>
-                    <option value="金門縣">金門縣</option>
-                    <option value="澎湖縣">澎湖縣</option>
-                    <option value="綠島">綠島</option>
-                    <option value="蘭嶼">蘭嶼</option>
+                    <option value="新竹縣市" <?= $row['live']=="新竹縣市" ? " selected " : ""  ?>>新竹縣市</option>
+                    <option value="苗栗縣" <?= $row['live']=="苗栗縣" ? " selected " : ""  ?>>苗栗縣</option>
+                    <option value="台中市" <?= $row['live']=="台中市" ? " selected " : ""  ?>>台中市</option>
+                    <option value="彰化縣" <?= $row['live']=="彰化縣" ? " selected " : ""  ?>>彰化縣</option>
+                    <option value="雲林縣" <?= $row['live']=="雲林縣" ? " selected " : ""  ?>>雲林縣</option>
+                    <option value="嘉義縣市" <?= $row['live']=="嘉義縣市" ? " selected " : ""  ?>>嘉義縣市</option>
+                    <option value="台南市" <?= $row['live']=="台南市" ? " selected " : ""  ?>>台南市</option>
+                    <option value="高雄市" <?= $row['live']=="高雄市" ? " selected " : ""  ?>>高雄市</option>
+                    <option value="屏東縣" <?= $row['live']=="屏東縣" ? " selected " : ""  ?>>屏東縣</option>
+                    <option value="宜蘭縣" <?= $row['live']=="宜蘭縣" ? " selected " : ""  ?>>宜蘭縣</option>
+                    <option value="花蓮縣" <?= $row['live']=="花蓮縣" ? " selected " : ""  ?>>花蓮縣</option>
+                    <option value="台東縣" <?= $row['live']=="台東縣" ? " selected " : ""  ?>>台東縣</option>
+                    <option value="連江縣" <?= $row['live']=="連江縣" ? " selected " : ""  ?>>連江縣</option>
+                    <option value="金門縣" <?= $row['live']=="金門縣" ? " selected " : ""  ?>>金門縣</option>
+                    <option value="澎湖縣" <?= $row['live']=="澎湖縣" ? " selected " : ""  ?>>澎湖縣</option>
+                    <option value="綠島" <?= $row['live']=="綠島" ? " selected " : ""  ?>>綠島</option>
+                    <option value="蘭嶼" <?= $row['live']=="蘭嶼" ? " selected " : ""  ?>>蘭嶼</option>
                 </select>
             </div>
 

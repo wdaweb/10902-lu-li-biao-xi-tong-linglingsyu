@@ -17,7 +17,7 @@ class DB{
   public function all(...$arg){
     $sql = "select * from `$this->table`";
     if(!empty($arg[0]) && is_array($arg[0])){
-      foreach ($arg as $key => $value){
+      foreach ($arg[0] as $key => $value){
         $tmp[]= sprintf("`%s`='%s'",$key,$value);
       }
       $sql = $sql . " where " . implode( " && " , $tmp);
@@ -26,7 +26,7 @@ class DB{
     if(!empty($arg[1])){
       $sql = $sql . $arg[1];
     }
-    return $this->pdo->query($sql)->fetchAll();
+    return $this->pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   }
 
   public function find($arg){

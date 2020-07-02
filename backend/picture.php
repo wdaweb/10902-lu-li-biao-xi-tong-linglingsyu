@@ -1,45 +1,37 @@
-<table class="table table-sm">
+<h3>履歷表管理後台 - 個人圖片</h3>
+<table class="table table-sm text-center table-borderless mt-3">
   <thead>
-    <tr>
+    <tr class="border-bottom border-dark ">
       <th>#</th>
       <th>圖片</th>
-      <th>路徑</th>
+      <th>檔名</th>
       <th>顯示</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <?php
+      <?php
+      
+      $db = new DB("resume_picture");
+      $rows = $db->all(["userid"=>$userid]);
 
-    // $$db = new DB("resume_picture");
-    // $rows = $db->all();
-    // foreach($rows as $row){
-    //   echo "<tr>";
-    //   foreach($row as $value){
-    //     $num++;
-    //     echo "<td>".$num."</td>";
-    //     echo "<td><img src='".$row[0]."'>" ."</td>"
+      foreach ($rows as $key => $row) {
+        $checked = ($row["sh"]) ? "checked":"";
+        echo "<tr>";
+        echo "<td width='5%'  height='150px'>" . ($key + 1) . "</td>";
+        echo '<td width="40%" height="150px"  class="pic"><img src="' . $row["path"] . '" class="img-thumbnail "></td>';
+        echo '<td width="35%" height="150px"  class="name">' . $row["name"] . '</td>';
+        echo '<td width="10%" height="150px" ><div class="form-check"><input class="form-check-input" type="radio" name="sh" id="sh' . $row["id"] . '" value="' . $row["id"] . '"'.$checked.'><label class="form-check-label" for="' . 'sh' . $row["id"] . '">顯示</label> </div></td>';
+        echo '<td width="10%" height="150px"><button class="btn btn-danger" onclick="del_pic('.$row["id"].')">刪除</button></td>';
+        echo "</tr>";
+      }
 
 
-    //   }
-    //   echo "</tr>";
-    // }
-    
-    ?>
-    <tr>
-      <td scope="row">1</td>
-      <td class="pic"><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
-      <td class="path">/img/123.png</td>
-      <td>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="sh" id="sh" >
-          <label class="form-check-label" for="sh">顯示</label>
-        </div>
-      </td>
-      <td class="del">刪除</td>
-    </tr>
+
+      ?>
   </tbody>
 </table>
+
 
 <script>
   $('#myModal').on('shown.bs.modal', function() {
@@ -53,7 +45,7 @@
 </button>
 
 <!-- Modal -->
-<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade " id="exampleModal" tabindex="-1">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -83,8 +75,9 @@
     let pic = e.target.files;
     let userid = '<?= $_SESSION['userid']; ?>';
     fileData = new FormData();
-    fileData.append(pic[0].name, pic[0],);
+    fileData.append(pic[0].name, pic[0], );
   })
+
   function save_pic() {
     $.ajax({
       url: "api/save_pic.php",
@@ -94,22 +87,20 @@
       cache: false,
       processData: false,
       success: function(res) {
-        // let tbody = document.getElementsByTagName("tbody").innerHTML
-        // tbody = tbody+`
-        //  <tr>
-        //   <td scope="row">1</td>
-        //   <td><img src="https://fakeimg.pl/100x100/" class="img-thumbnail"></td>
-        //   <td>/img/123.png</td>
-        //   <td>
-        //     <div class="form-check">
-        //       <input class="form-check-input" type="radio" name="sh" id="sh" >
-        //       <label class="form-check-label" for="sh">顯示</label>
-        //     </div>
-        //   </td>
-        //   <td class="del">刪除</td>
-        // </tr>`
         location.reload();
-      } 
+      }
     });
   }
+
+  function del_pic(p_id){
+      $.post("api/del_pic.php", {p_id},function(res){
+        if(res = 1) {
+          alert('刪除成功');
+          location.reload();
+        }else{
+          alert('刪除失敗');
+        }
+      });
+  }
+
 </script>
