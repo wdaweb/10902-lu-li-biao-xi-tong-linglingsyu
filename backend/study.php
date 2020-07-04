@@ -17,9 +17,6 @@
       <?php
       $db = new DB("resume_study");
       $rows = $db->all(["userid" => $userid]);
-      // echo "<pre>";
-      // print_r($rows);
-      // echo "</pre>";
       foreach ($rows as $key => $row) {
         $s_month = ($row['s_month'] < 10) ? ("0" . $row['s_month']) : $row['s_month'];
         $g_month = ($row['g_month'] < 10) ? ("0" . $row['g_month']) : $row['s_month'];
@@ -178,8 +175,6 @@
     }, function(res) {
       let result = JSON.parse(res);
       let time = new Date();
-      let year = time.getFullYear;
-      let month = time.getMonth;
       // console.log(result);
       document.querySelector("#study2").innerHTML = `
           <div class="input-group input-group-sm  mb-3">
@@ -276,8 +271,15 @@
     })
   })
 
-  function del_study(e){
-    
+  function del_study(id){
+    $.post("../api/del_study.php",{id},function(res){
+      if(res == 1){
+        alert("刪除成功");
+        location.reload();
+      }else{
+        alert("GG刪除失敗惹")
+      }
+    })
   }
 </script>
 
