@@ -174,7 +174,6 @@
       id
     }, function(res) {
       let result = JSON.parse(res);
-      let time = new Date();
       // console.log(result);
       document.querySelector("#study2").innerHTML = `
           <div class="input-group input-group-sm  mb-3">

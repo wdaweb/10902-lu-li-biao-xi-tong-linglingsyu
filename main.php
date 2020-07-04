@@ -32,11 +32,11 @@
           <div class="btn-group dropright">
             <button id="btnGroupVerticalDrop2" type="button" class="btn dropdown-toggle" data-toggle="dropdown">工作技能管理</button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="?do=front">前端技能</a>
-              <a class="dropdown-item" href="?do=backend">後端技能</a>
-              <a class="dropdown-item" href="?do=software">應用軟體</a>
-              <a class="dropdown-item" href="?do=lan">語言能力</a>
-              <a class="dropdown-item" href="?do=Cert">專業證照</a>
+              <a class="dropdown-item" href="?do=skill_front">前端技能</a>
+              <a class="dropdown-item" href="?do=skill_backend">後端技能</a>
+              <a class="dropdown-item" href="?do=skill_software">應用軟體</a>
+              <a class="dropdown-item" href="?do=skill_lan">語言能力</a>
+              <a class="dropdown-item" href="?do=skill_cert">專業證照</a>
             </div>
           </div>
           <button type="button" class="btn">履歷表管理</button>
@@ -130,6 +130,54 @@
       data['inwork'] = work2.inwork.value;
     }
       $.post("api/save_work.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
+
+    function save_front(e) {
+      let front = document.getElementById("front");
+      let front2 = document.getElementById("front2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = front.name.value;
+      data['level'] = front.level.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = front2.name.value;
+      data['level'] = front2.level.value;
+    }
+      $.post("api/save_front.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
+
+    function save_backend(e) {
+      let backend = document.getElementById("backend");
+      let backend2 = document.getElementById("backend2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = backend.name.value;
+      data['level'] = backend.level.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = backend2.name.value;
+      data['level'] = backend2.level.value;
+    }
+      $.post("api/save_backend.php",data,function(res){
         if(res >= 1){
           alert("更新成功!");
           location.reload();
