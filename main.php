@@ -67,8 +67,41 @@
 
 
   <script>
-
-
+    function save_study(e) {
+      let study = document.getElementById("study");
+      let study2 = document.getElementById("study2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['edu'] = study.edu.value;
+      data['status'] = study.status.value;
+      data['school'] = study.school.value;
+      data['dept'] = study.dept.value;
+      data['s_year'] = study.s_year.value;
+      data['s_month'] = study.s_month.value;
+      data['g_year'] = study.g_year.value;
+      data['g_month'] = study.g_month.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['edu'] = study2.edu.value;
+      data['status'] = study2.status.value;
+      data['school'] = study2.school.value;
+      data['dept'] = study2.dept.value;
+      data['s_year'] = study2.s_year.value;
+      data['s_month'] = study2.s_month.value;
+      data['g_year'] = study2.g_year.value;
+      data['g_month'] = study2.g_month.value;
+    }
+      $.post("api/save_study.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
   </script>
 
 </body>
