@@ -263,3 +263,13 @@ body{
   top:20%;
 }
 
+input[readonly] {
+  background-color:transparent;
+  border:none;
+}
+
+
+input[readonly]:focus{
+  outline: none;
+}
+

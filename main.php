@@ -39,7 +39,7 @@
               <a class="dropdown-item" href="?do=skill_cert">專業證照</a>
             </div>
           </div>
-          <button type="button" class="btn">履歷表管理</button>
+          <button type="button" class="btn" href="?do=skill_self">自傳管理</button>
         </div>
         <button class="btn mt-5" onclick="location.replace('api/logout.php')">登出</button>
       </div>
@@ -178,6 +178,79 @@
       data['level'] = backend2.level.value;
     }
       $.post("api/save_backend.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
+
+    
+    function save_software(e) {
+      let software = document.getElementById("software");
+      let software2 = document.getElementById("software2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = software.name.value;
+      data['level'] = software.level.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = software2.name.value;
+      data['level'] = software2.level.value;
+    }
+      $.post("api/save_software.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
+
+    function save_lan(e) {
+      let lan = document.getElementById("lan");
+      let lan2 = document.getElementById("lan2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = lan.name.value;
+      data['level'] = lan.level.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = lan2.name.value;
+      data['level'] = lan2.level.value;
+    }
+      $.post("api/save_lan.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
+
+    function save_cert(e) {
+      let cert = document.getElementById("cert");
+      let cert2 = document.getElementById("cert2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = cert.name.value;
+      data['level'] = cert.level.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = cert2.name.value;
+      data['level'] = cert2.level.value;
+    }
+      $.post("api/save_cert.php",data,function(res){
         if(res >= 1){
           alert("更新成功!");
           location.reload();

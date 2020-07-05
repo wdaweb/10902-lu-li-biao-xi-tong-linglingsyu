@@ -72,8 +72,8 @@
 
 <script>
   document.getElementById("pic").addEventListener("change", (e) => {
-    let pic = e.target.files;
     let userid = '<?= $_SESSION['userid']; ?>';
+    let pic = e.target.files;
     fileData = new FormData();
     fileData.append(pic[0].name, pic[0], );
   })
