@@ -19,6 +19,7 @@
   $row = $db->find($userid);
 
   if (empty($row)) {
+    $row['id'] = "";
     $row['facebook'] = "";
     $row['instagram'] = "";
     $row['github'] = "";
@@ -29,39 +30,40 @@
 
   <div id="backend_link" class="w-75 ">
     <h3 class="text-center">履歷表管理後台 - 個人連結</h3>
-    <div class="form-groupk mt-4">
-        <div class="mr-3"  style="width:18%;">連結名稱</div>
-        <input type="text" class="text-center" style="width:60%"  value="連結位址"  readonly>   </div>
-    </div>
-
     <div id="link" class="my-2">
-      <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>">
-      <input type="hidden" name="userid" id="userid" value="<?= $userid ?>">
-      <div class="form-groupk my-2">
+    <div class="form-groupk mt-4 ">
+      <input type="text" class="mr-3" style="width:18%;" value="連結名稱" disabled>
+      <input type="text" class="text-center" style="width:60%"  value="連結位址"  disabled></div>
+    </div>
+    <input type="hidden" name="userid" id="userid"  value="<?= $userid ?>">
+    <div class="form-groupk my-2">
         <input type="text" class="mr-3" name="name[]" id="name" value="facebook" style="width:18%;" readonly>
-        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm " style="width:60%" value="<?= $row['facebook'] ?>">
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm reset" style="width:60%" value="<?= $row['facebook'] ?>">
       </div>
 
       <div class="form-group my-2">
         <input type="text" class="mr-3" name="name[]" value="instagram" style="width:18%;" readonly>
-        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['instagram'] ?>">
+        <input type="text" name="link[]" id="ig" class="d-inline-block form-control form-control-sm reset" style="width:60%" value="<?= $row['instagram'] ?>">
       </div>
 
       <div class="form-group my-2">
+        <!-- <input type="hidden" name="id[]"  value="<?= $row['id'] ?>"> -->
         <input type="text" class="mr-3" name="name[]" value="Github" style="width:18%;" readonly>
-        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['github'] ?>">
+        <input type="text" name="link[]" id="github" class="d-inline-block form-control form-control-sm reset" style="width:60%" value="<?= $row['github'] ?>">
       </div>
 
       <div class="form-group my-2">
+        <!-- <input type="hidden" name="id[]"  value="<?= $row['id'] ?>"> -->
         <input type="text" class="mr-3" name="name[]" value="Portfolio" style="width:18%;" readonly>
-        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['portfolio'] ?>">
+        <input type="text" name="link[]" id="port" class="d-inline-block form-control form-control-sm reset" style="width:60%" value="<?= $row['portfolio'] ?>">
       </div>
   
-      <div id="addlink"><button class="btn btn-primary btn-sm m-2" id="adlink">新增連結</button></div>
-    
+      
+      <div id="addlink"></div>
       <div class="d-flex justify-content-center w-75">
-        <input type="reset" value="重寫" class="m-2 btn btn-sm btn-secondary w-25 ml-4">
-        <input type="submit" onclick="save()" value="更新" class="w-25 m-2 btn btn-sm btn-warning">
+      <button class="btn btn-primary btn-sm m-2" id="adlink">新增連結</button>
+        <button  onclick="reset()" class="m-2 btn btn-sm btn-secondary w-25 ml-4">重寫</button>
+        <button  onclick="save()"  class="w-25 m-2 btn btn-sm btn-warning">更新</button>
       </div>
     </div>
   </div>
@@ -69,34 +71,54 @@
   <script>
     function save() {
       let data = new Object;
-      let link = document.querySelector("#link");
-      data['id'] = document.querySelector("#profile_data").querySelector("#id").value;
-      data['userid'] = document.querySelector("#profile_data").querySelector("#userid").value;
-      data['name'] = document.querySelector("#profile_data").querySelector("#name").value;
-      data['enname'] = document.querySelector("#profile_data").querySelector("#enname").value;
-      data['tel'] = document.querySelector("#profile_data").querySelector("#tel").value;
-      $.post("api/profile.php", data, function(res) {
-        if (res >= 1) {
-          // console.log(res);
-          alert("更新成功!");
-          location.reload();
-        } else {
-          // console.log(res);
-          alert("更動失敗!");
-        }
+      // let arrid = new Array;
+      let arrlink = new Array;
+      let arrname = new Array;
+      let link = $("input[name='link[]']");
+      let name = $("input[name='name[]']");
+      // let id= $("input[name='id[]']");
+      for (let i = 0 ; i < link.length ; i++){
+        arrlink.push(link[i].value) ;
+      }
+      for (let j = 0; j < name.length ; j++){
+        arrname.push(name[j].value) ;
+      }
+      // for (let k = 0; k < id.length ; k++){
+      //   arrid.push(name[k].value) ;
+      // }
+      // data['id'] = arrid;
+      // data['userid'] = document.getElementById("userid").value;
+      data['name'] = arrname;
+      data['link'] = arrlink;
+      // console.log(data);
+      $.post("api/link.php", data, function(res) {
+          console.log(res);
+        // if (res >= 1) {
+        //   //  console.log(res);
+        //   // alert("更新成功!");
+        //   // location.reload();
+        // } else {
+        //   // console.log(res);
+        //   alert("更動失敗!");
+        // }
       })
     }
+    
 
   
       $("#adlink").on("click",function(){
         let str =  
       `<div class="form-group my-2">
-        <input type="text" class="mr-3" name="name[]"  style="width:18%;" >
-        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%">
+        <input type="text" class="mr-3 rt" name="name[]"  style="width:18%;" >
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm reset" style="width:60%">
       </div>
       `;
-        $("#addlink").append(str);
+        $("#addlink").prepend(str);
       })
+
+      function reset(){
+       $(".reset,.rt").val("");
+    }
 
   </script>
 </body>
