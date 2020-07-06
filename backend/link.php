@@ -25,7 +25,6 @@
     $row['portfolio'] = "";
   }
 
-
   ?>
 
   <div id="backend_link" class="w-75 ">
@@ -34,28 +33,24 @@
       <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>">
       <input type="hidden" name="userid" id="userid" value="<?= $userid ?>">
       <div class="form-groupk my-2">
-        <input type="text"  name="name" id="name" value="facebook" style="width:18%;" readonly>
-        <input type="text" id="facebook" name="facebook" class="d-inline-block form-control form-control-sm " style="width:60%" value="<?= $row['facebook'] ?>">
-        <input type="button"  class="btn btn-sm btn-danger ml-3" value="刪除">
+        <input type="text" name="name[]" id="name" value="facebook" style="width:18%;" readonly>
+        <input type="text" id="facebook" name="link[]" class="d-inline-block form-control form-control-sm " style="width:60%" value="<?= $row['facebook'] ?>">
       </div>
 
       <div class="form-group my-2">
-        <input type="text"  value="instagram" style="width:18%;" readonly>
-        <input type="text" id="ig" name="ig" class="d-inline-block form-control form-control-sm" style="width:60%"  value="<?= $row['instagram'] ?>">
-        <input type="button"  class="btn btn-sm btn-danger ml-3" value="刪除">
+        <input type="text" name="name[]" value="instagram" style="width:18%;" readonly>
+        <input type="text" id="ig" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['instagram'] ?>">
       </div>
 
       <div class="form-group my-2">
-      <input type="text"  value="Github"  style="width:18%;" readonly>
-        <input type="text" id="github" name="github" class="d-inline-block form-control form-control-sm"  style="width:60%" value="<?= $row['github'] ?>">
-        <input type="button"  class="btn btn-sm btn-danger ml-3" value="刪除">
+        <input type="text" name="name[]" value="Github" style="width:18%;" readonly>
+        <input type="text" id="github" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['github'] ?>">
       </div>
 
       <div class="form-group my-2">
-      <input type="text"  value="Portfolio"  style="width:18%;" readonly>
-        <input type="text" id="portfolio" name="portfolio" class="d-inline-block form-control form-control-sm"  style="width:60%" value="<?= $row['portfolio'] ?>">
-        <input type="button"  class="btn btn-sm btn-danger ml-3" value="刪除">
-      </div> 
+        <input type="text" name="name[]" value="Portfolio" style="width:18%;" readonly>
+        <input type="text" id="portfolio" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['portfolio'] ?>">
+      </div>
       <div class="d-flex justify-content-center w-75">
         <input type="reset" value="重寫" class="m-2 btn btn-sm btn-secondary w-25 ml-4">
         <input type="submit" onclick="save()" value="更新" class="w-25 m-2 btn btn-sm btn-warning">
@@ -84,9 +79,6 @@
       })
     }
   </script>
-
-  <!-- https://alligator.io/css/ -->
-
 </body>
 
 </html>

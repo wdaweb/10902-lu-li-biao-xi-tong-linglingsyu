@@ -76,7 +76,9 @@
   <div class="wrap d-flex justify-content-center align-items-center">
     <form>
       <div class="d-flex flex-column justify-content-center align-items-center">
-        <div class="text-left"><h1 class="mb-5 ">主控台登入</h1></div>
+        <div class="text-left">
+          <h1 class="mb-5 ">主控台登入</h1>
+        </div>
 
         <div>
           <label for="acc">帳號</label>
@@ -95,13 +97,14 @@
   </div>
 
   <script>
+    
     function login() {
       let acc = $("#acc").val();
       let pw = $("#pw").val();
       if (acc == "" || pw == "") {
         alert("帳號或密碼錯誤，請重新輸入");
       } else {
-        $.get("api/chklogin.php", {acc,pw}, function(res) {
+        $.get("api/chklogin.php", { acc, pw }, function (res) {
           if (res == 1) {
             location.href = "main.php";
           } else {
@@ -111,6 +114,14 @@
         })
       }
     }
+
+    $("#acc","#pw").keypress(function (e) {
+      code = (e.keyCode ? e.keyCode : e.which);
+      if (code == 13) {
+        login();
+      }
+    });
+
 
 
   </script>

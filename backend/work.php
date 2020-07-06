@@ -35,8 +35,8 @@
           </div>
         </td>
         <td>
-          <button class="btn btn-warning btn-sm mr-1 ubtn" data-toggle="modal" data-target="#Modal2" id="<?= $row['id'] ?>">更新
-          </button><button class="btn btn-danger btn-sm ml-1" onclick="del_work(<?= $row['id'] ?>)">刪除</button>
+          <button class="btn btn-warning btn-sm  ubtn" data-toggle="modal" data-target="#Modal2" id="<?= $row['id'] ?>">更新
+          </button><button class="btn btn-danger btn-sm " onclick="del_work(<?= $row['id'] ?>)">刪除</button>
         </td>
     </tr>
   <?php  }  ?>
