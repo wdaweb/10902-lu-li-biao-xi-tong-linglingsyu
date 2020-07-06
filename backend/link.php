@@ -29,28 +29,37 @@
 
   <div id="backend_link" class="w-75 ">
     <h3 class="text-center">履歷表管理後台 - 個人連結</h3>
-    <form id="link" class="mt-4">
+    <div class="form-groupk mt-4">
+        <input type="text" class="mr-3" value="連結名稱" style="width:18%;" readonly>
+        <input type="text" class="text-center" style="width:60%"  value="連結位址"  readonly>
+    </div>
+
+    <form id="link" class="my-2">
       <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>">
       <input type="hidden" name="userid" id="userid" value="<?= $userid ?>">
       <div class="form-groupk my-2">
-        <input type="text" name="name[]" id="name" value="facebook" style="width:18%;" readonly>
-        <input type="text" id="facebook" name="link[]" class="d-inline-block form-control form-control-sm " style="width:60%" value="<?= $row['facebook'] ?>">
+        <input type="text" class="mr-3" name="name[]" id="name" value="facebook" style="width:18%;" readonly>
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm " style="width:60%" value="<?= $row['facebook'] ?>">
       </div>
 
       <div class="form-group my-2">
-        <input type="text" name="name[]" value="instagram" style="width:18%;" readonly>
-        <input type="text" id="ig" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['instagram'] ?>">
+        <input type="text" class="mr-3" name="name[]" value="instagram" style="width:18%;" readonly>
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['instagram'] ?>">
       </div>
 
       <div class="form-group my-2">
-        <input type="text" name="name[]" value="Github" style="width:18%;" readonly>
-        <input type="text" id="github" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['github'] ?>">
+        <input type="text" class="mr-3" name="name[]" value="Github" style="width:18%;" readonly>
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['github'] ?>">
       </div>
 
       <div class="form-group my-2">
-        <input type="text" name="name[]" value="Portfolio" style="width:18%;" readonly>
-        <input type="text" id="portfolio" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['portfolio'] ?>">
+        <input type="text" class="mr-3" name="name[]" value="Portfolio" style="width:18%;" readonly>
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%" value="<?= $row['portfolio'] ?>">
       </div>
+  
+      <div id="addlink">      <button class="btn btn-primary btn-sm m-2" id="adlink">新增連結</button></div>
+    
+
       <div class="d-flex justify-content-center w-75">
         <input type="reset" value="重寫" class="m-2 btn btn-sm btn-secondary w-25 ml-4">
         <input type="submit" onclick="save()" value="更新" class="w-25 m-2 btn btn-sm btn-warning">
@@ -78,6 +87,18 @@
         }
       })
     }
+
+  
+      $("#adlink").on("click",function(){
+        let str =  
+      `<div class="form-group my-2">
+        <input type="text" class="mr-3" name="name[]"  style="width:18%;" >
+        <input type="text" name="link[]" class="d-inline-block form-control form-control-sm" style="width:60%">
+      </div>
+      `;
+        $("#addlink").append(str);
+      })
+
   </script>
 </body>
 
