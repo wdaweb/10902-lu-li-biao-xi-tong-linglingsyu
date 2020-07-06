@@ -74,12 +74,10 @@
 
 
   <div class="wrap d-flex justify-content-center align-items-center">
-    <form>
       <div class="d-flex flex-column justify-content-center align-items-center">
         <div class="text-left">
           <h1 class="mb-5 ">主控台登入</h1>
         </div>
-
         <div>
           <label for="acc">帳號</label>
           <input type="text" id="acc">
@@ -88,38 +86,42 @@
           <label for="pw">密碼</label>
           <input type="password" id="pw">
         </div>
+        <div class="mt-4">
+          <button class="mx-2" onclick="reset()">清除</button>
+          <button id="log" class="mx-2" onclick="login()">登入</button>
+        </div>
       </div>
-      <div class="d-flex mt-4 justify-content-center align-items-center">
-        <button class="mx-2" type="reset">清除</button>
-        <button class="mx-2" id="submit" type="submit" onclick="login()">登入</button>
-      </div>
-    </form>
   </div>
 
+
   <script>
-    
+
     function login() {
+      // console.log("1");
       let acc = $("#acc").val();
       let pw = $("#pw").val();
       if (acc == "" || pw == "") {
-        alert("帳號或密碼錯誤，請重新輸入");
+        alert("帳號或密碼為空，請重新輸入");
+        // console.log("2");
       } else {
-        $.get("api/chklogin.php", { acc, pw }, function (res) {
+        $.post("api/chklogin.php", { acc, pw }, function (res) {
           if (res == 1) {
             location.href = "main.php";
-          } else {
+          } else {    
             alert("帳號或密碼錯誤，請重新輸入");
-            location.reload();
           }
         })
       }
     }
+    function reset(){
+       $("#acc").val("");
+       $("#pw").val("");
+    }
 
-    $("#acc,#pw,#submit").keypress(function (e) {
-      code = (e.keyCode ? e.keyCode : e.which);
-      console.log(code);
-      if (code == 13) {
-        document.getElementById("submit").click();
+    $("#acc,#pw,#log").keypress(function(e){
+      let code  =  ( e.keyCode ? e.keyCode : e.which) ;
+      if(code == 13 ){
+        document.getElementById("log").click();
       }
     });
 
