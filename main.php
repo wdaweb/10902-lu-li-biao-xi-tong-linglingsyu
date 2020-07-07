@@ -107,6 +107,8 @@
     function save_work(e) {
       let work = document.getElementById("work");
       let work2 = document.getElementById("work2");
+      let inwork = (document.getElementById("inwork").checked)?1:0;
+      let inwork2 = (document.getElementById("inwork2").checked)?1:0;
       let data = new Object;
       if (e == undefined) {
       data['userid'] = <?= $_SESSION['userid'] ?>;
@@ -117,7 +119,7 @@
       data['s_month'] = work.s_month.value;
       data['e_year'] = work.e_year.value;
       data['e_month'] = work.e_month.value;
-      data['inwork'] = work.inwork.value;
+      data['inwork'] = document.getElementById("inwork").checked;
     }else{
       data['id'] = e;
       data['userid'] = <?= $_SESSION['userid'] ?>;
@@ -128,7 +130,7 @@
       data['s_month'] = work2.s_month.value;
       data['e_year'] = work2.e_year.value;
       data['e_month'] = work2.e_month.value;
-      data['inwork'] = work2.inwork.value;
+      data['inwork'] = document.getElementById("inwork2").checked;
     }
       $.post("api/save_work.php",data,function(res){
         if(res >= 1){

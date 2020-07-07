@@ -20,9 +20,9 @@
       foreach ($rows as $key => $row) {
         $s_month = ($row['s_month'] < 10) ? ("0" . $row['s_month']) : $row['s_month'];
         $e_month = ($row['e_month'] < 10) ? ("0" . $row['e_month']) : $row['e_month'];
-        $chk = ($row['sh'] == 1) ? "checked" : "";
+        $chk = ($row['sh']) ? "checked" : "";
         $str = $row['e_year'] . $e_month;
-        $endtime = ($row['inwork'] == "在職")? "在職" : $str;
+        $endtime = ($row['inwork'] == "true")? "在職" : $str;
         echo "<td>" . ($key + 1) . "</td>";
         echo "<td class='text-left'>" . $row['com'] . "</td>";
         echo "<td class='text-left'>" . $row['pos'] . "</td>";
@@ -158,7 +158,7 @@
     const id = $(this).attr("id");
     $.get("../api/read_work.php", {id}, function(res) {
       let result = JSON.parse(res);
-      let chk = (result["inwork"] == "在職") ?　"checked" : "" ;
+      let chk = (result["inwork"] == "true") ?　"checked" : "" ;
       // let dis = (result["inwork"] == "在職") ?　"disabled='disabled'" : "" ;
       console.log(result);
       document.querySelector("#work2").innerHTML = `
@@ -216,8 +216,11 @@
               ?>
             </select>
             <span>月</span>
+            <?php
+            $chk = ($row['inwork']) ? "checked" : "";
+            ?>
             <div class="form-check d-inline-block ml-2">
-              <input class="form-check-input" type="checkbox" class="inwork" id="inwork" value="在職">
+              <input class="form-check-input" type="checkbox" class="inwork" id="inwork2" value="1"  ${chk}>
               <label class="form-check-label" for="inwork2">在職</label>
             </div>
           </div>
