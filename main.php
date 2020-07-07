@@ -39,7 +39,7 @@
               <a class="dropdown-item" href="?do=skill_cert">專業證照</a>
             </div>
           </div>
-          <button type="button" class="btn" href="?do=skill_self">自傳管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=self'">自傳管理</button>
         </div>
         <button class="btn mt-5" onclick="location.replace('api/logout.php')">登出</button>
       </div>
@@ -251,6 +251,31 @@
       data['level'] = cert2.level.value;
     }
       $.post("api/save_cert.php",data,function(res){
+        if(res >= 1){
+          alert("更新成功!");
+          location.reload();
+        }else{
+          alert("GG更新失敗!!");
+        }
+      })
+    }
+
+
+    function save_self(e) {
+      let self = document.getElementById("self");
+      let self2 = document.getElementById("self2");
+      let data = new Object;
+      if (e == undefined) {
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = self.name.value;
+      data['text'] = self.content.value;
+    }else{
+      data['id'] = e;
+      data['userid'] = <?= $_SESSION['userid'] ?>;
+      data['name'] = self2.name.value;
+      data['text'] = self2.content.value;
+    }
+      $.post("api/save_self.php",data,function(res){
         if(res >= 1){
           alert("更新成功!");
           location.reload();
