@@ -40,6 +40,7 @@
             </div>
           </div>
           <button type="button" class="btn" onclick="location.href='?do=self'">自傳管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=prot'">作品集管理</button>
         </div>
         <button class="btn mt-5" onclick="location.replace('api/logout.php')">登出</button>
       </div>

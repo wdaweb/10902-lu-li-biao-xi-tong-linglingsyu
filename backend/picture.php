@@ -10,25 +10,26 @@
     </tr>
   </thead>
   <tbody>
-      <?php
-      
-      $db = new DB("resume_picture");
-      $rows = $db->all(["userid"=>$userid]);
+    <?php
 
-      foreach ($rows as $key => $row) {
-        $checked = ($row["sh"]) ? "checked":"";
-        echo "<tr>";
-        echo "<td width='5%'  height='150px'>" . ($key + 1) . "</td>";
-        echo '<td width="40%" height="150px"  class="pic"><img src="' . $row["path"] . '" class="img-thumbnail "></td>';
-        echo '<td width="35%" height="150px"  class="name">' . $row["name"] . '</td>';
-        echo '<td width="10%" height="150px" ><div class="form-check"><input class="form-check-input" type="radio" name="sh" id="sh' . $row["id"] . '" value="' . $row["id"] . '"'.$checked.'><label class="form-check-label" for="' . 'sh' . $row["id"] . '">顯示</label> </div></td>';
-        echo '<td width="10%" height="150px"><button class="btn btn-danger" onclick="del_pic('.$row["id"].')">刪除</button></td>';
-        echo "</tr>";
-      }
+    $db = new DB("resume_picture");
+    $rows = $db->all(["userid" => $userid]);
+
+    foreach ($rows as $key => $row) {
+      $chk=($row['sh'])?"checked":'';
+      echo "<tr>";
+      echo "<td width='5%'  height='150px'>" . ($key + 1) . "</td>";
+      echo '<td width="40%" height="150px"  class="pic"><img src="' . $row["path"] . '" class="img-thumbnail "></td>';
+      echo '<td width="35%" height="150px"  class="name">' . $row["name"] . '</td>';
+      echo '<td width="10%" height="150px"> <div class="form-check"><input class="form-check-input" type="radio" onclick="sh()" name="sh" id="sh' . $row["id"] . '" value="' . $row["id"] . '"'.$chk.'><label class="form-check-label" for="' . 'sh' . $row["id"] . '">顯示</label> </div></td>';
+      echo '<td width="10%" height="150px"><button class="btn btn-danger" onclick="del_pic(' . $row["id"] . ')">刪除</button></td>';
+      echo '<input type="hidden" name="id[]" value="'. $row['id'] .'">';
+      echo "</tr>";
+    }
 
 
 
-      ?>
+    ?>
   </tbody>
 </table>
 
@@ -92,15 +93,35 @@
     });
   }
 
-  function del_pic(p_id){
-      $.post("api/del_pic.php", {p_id},function(res){
-        if(res = 1) {
-          alert('刪除成功');
-          location.reload();
-        }else{
-          alert('刪除失敗');
-        }
-      });
+  function del_pic(p_id) {
+    $.post("api/del_pic.php", {
+      p_id
+    }, function(res) {
+      if (res = 1) {
+        alert('刪除成功');
+        location.reload();
+      } else {
+        alert('刪除失敗');
+      }
+    });
   }
 
+  function sh() {
+    let data = {};
+    let arrid = new Array;
+    let id = $("input[name='id[]']");
+    for (let k = 0; k < id.length; k++) {
+        arrid.push(id[k].value);
+      }
+    data['id'] = arrid;
+    data['sh'] = $("[name='sh']:checked").val()
+    $.post("api/show_pic.php",data, function(res) {
+      if (res >= 1) {
+        alert("更新成功");
+        location.reload();
+      } else {
+        alert("顯示更新失敗");
+      }
+    })
+  }
 </script>

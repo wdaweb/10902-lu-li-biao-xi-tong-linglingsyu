@@ -20,7 +20,6 @@ if (!empty($_FILES[$key[0]]["tmp_name"])) {
     'name' => $filename ,
     'path' => 'img/' . $filename,
     'userid'=>$_SESSION['userid'],
-    'sh'=>'1'
   ];
   $db = new DB("resume_picture");
   $res = $db->save($data);

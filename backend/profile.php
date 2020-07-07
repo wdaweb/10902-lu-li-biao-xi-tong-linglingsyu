@@ -167,15 +167,15 @@ function save(){
 }
 
 function sh(){
-//  console.log( $("[name='lineshow']:checked").val());
  let data = {};
  data['id'] = <?= $row['id'] ?>;
  data['lineshow'] = $("[name='lineshow']:checked").val()
  data['telshow'] = $("[name='telshow']:checked").val()
 //  console.log(data);
  $.post("api/profile.php",data,function(res){
-     console.log(res);
+    //  console.log(res);
     if(res>=1){
+        alert("顯示更新成功");
         location.reload();
     }else{
         alert("顯示更新失敗");
