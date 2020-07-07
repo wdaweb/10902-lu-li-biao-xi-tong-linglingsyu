@@ -21,17 +21,19 @@
         $s_month = ($row['s_month'] < 10) ? ("0" . $row['s_month']) : $row['s_month'];
         $e_month = ($row['e_month'] < 10) ? ("0" . $row['e_month']) : $row['e_month'];
         $chk = ($row['sh'] == 1) ? "checked" : "";
+        $str = $row['e_year'] . $e_month;
+        $endtime = ($row['inwork'] == "在職")? "在職" : $str;
         echo "<td>" . ($key + 1) . "</td>";
         echo "<td class='text-left'>" . $row['com'] . "</td>";
         echo "<td class='text-left'>" . $row['pos'] . "</td>";
         echo "<td>" . $row['s_year'] . $s_month . "</td>";
-        echo "<td>" . $row['e_year'] . $e_month . "</td>";
+        echo "<td>" . $endtime . "</td>";
         echo "<td class='text-left'>" . nl2br($row['job']) . "</td>";
       ?>
         <td>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="1" id="defaultCheck1" <?= $chk ?>>
-            <label class="form-check-label" for="defaultCheck1"></label>
+            <input class="form-check-input" type="checkbox" name="sh[]" onclick="sh()" value="<?= $row['id'] ?>"  <?= $chk ?>>
+            <input type="hidden" name="id[]" value="<?= $row['id'] ?>">
           </div>
         </td>
         <td>
@@ -245,6 +247,34 @@
         location.reload();
       } else {
         alert("GG刪除失敗惹")
+      }
+    })
+  }
+
+  function sh() {
+    let data = {};
+    let arrid = new Array;
+    let id = $("input[name='id[]']");
+    let arrsh = new Array;
+    let sh = document.getElementsByName("sh[]");
+    for (let i = 0; i < sh.length; i++) {
+      if(sh[i].checked){
+        arrsh.push(sh[i].value);
+      }
+    }
+    for (let k = 0; k < id.length; k++) {
+        arrid.push(id[k].value);
+      }
+    data['id'] = arrid;
+    data['sh'] = arrsh;
+    // console.log(data);
+    $.post("api/show_work.php",data, function(res) {
+      console.log(res);
+      if (res >= 1) {
+        // alert("已更新顯示");
+        location.reload();
+      } else {
+        alert("顯示更新失敗");
       }
     })
   }
