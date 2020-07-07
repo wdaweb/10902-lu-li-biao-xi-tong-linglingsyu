@@ -117,7 +117,7 @@
     data['sh'] = $("[name='sh']:checked").val()
     $.post("api/show_pic.php",data, function(res) {
       if (res >= 1) {
-        alert("更新成功");
+        alert("已更新顯示個人圖片");
         location.reload();
       } else {
         alert("顯示更新失敗");

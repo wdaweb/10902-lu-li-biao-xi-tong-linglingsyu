@@ -16,11 +16,13 @@
       foreach ($rows as $key => $row) {
         echo "<td>" . ($key + 1) . "</td>";
         echo "<td>" . $row['name'] . "</td>";
+        $chk=($row['sh'])?"checked":'';
       ?>
         <td>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sh" value="<?= $row['id'] ?>" id="defaultCheck1" >
+            <input class="form-check-input" type="radio" name="sh" onclick="sh()" value="<?= $row['id'] ?>" <?= $chk ?> >
             <label class="form-check-label" for="defaultCheck1"></label>
+            <input type="hidden" name="id[]" value="<?= $row['id'] ?>">
           </div>
         </td>
         <td>
@@ -82,7 +84,7 @@
       id
     }, function(res) {
       let result = JSON.parse(res);
-      console.log(result);
+      // console.log(result);
       document.querySelector("#self2").innerHTML = `
       
       <div class="form-group">
@@ -111,6 +113,26 @@
         location.reload();
       } else {
         alert("GG刪除失敗惹")
+      }
+    })
+  }
+
+  function sh() {
+    let data = {};
+    let arrid = new Array;
+    let id = $("input[name='id[]']");
+    for (let k = 0; k < id.length; k++) {
+        arrid.push(id[k].value);
+      }
+    data['id'] = arrid;
+    data['sh'] = $("[name='sh']:checked").val()
+    // console.log(data);
+    $.post("api/show_self.php",data, function(res) {
+      if (res >= 1) {
+        alert("已更新顯示的自傳");
+        location.reload();
+      } else {
+        alert("顯示更新失敗");
       }
     })
   }
