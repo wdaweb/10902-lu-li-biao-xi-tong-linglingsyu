@@ -48,12 +48,21 @@
                 <input type="text" id="tel" name="tel" class="form-control " placeholder="0912123456" value="<?= $row['tel'] ?>">
                 <div class="input-group-prepend">
                     <div class="input-group-text inline-block" id="telshow">
+                        <?php                       
+                            if($row['telshow'] == 1) {
+                                $a = "checked";
+                                $b = "" ;
+                            }else{
+                                $a = "";
+                                $b = "checked" ;
+                            }                   
+                        ?>
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="telshow[]"  value="0" >
+                            <input class="form-check-input" value="0" type="radio" onclick="sh()" name="telshow"  <?= $b ?>>
                             <label class="form-check-label" for="phnshow">不顯示</label>
                         </div>
                         <div class="form-check ml-1">
-                            <input class="form-check-input " type="radio" name="telshow[]"  value="1" checked>
+                            <input class="form-check-input" value="1" type="radio" onclick="sh()" name="telshow" <?= $a ?>>
                             <label class="form-check-label" for="phshow">顯示</label>
                         </div>
                     </div>
@@ -74,11 +83,20 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text">
                         <div class="form-check">
-                            <input class="form-check-input " type="radio" name="lineshow[]" value="0" checked>
+                            <?php                       
+                            if($row['lineshow'] == 1) {
+                                $a = "checked";
+                                $b = "" ;
+                            }else{
+                                $a = "";
+                                $b = "checked" ;
+                            }                   
+                            ?>
+                            <input class="form-check-input" id="enshow" type="radio" value="0" onclick="sh()" name="lineshow" <?= $b?>>
                             <label class="form-check-label" for="enshow">不顯示</label>
                         </div>
                         <div class="form-check ml-1">
-                            <input class="form-check-input " type="radio" name="lineshow[]"  value="1">
+                            <input class="form-check-input" id="eshow" type="radio"  value="1" onclick="sh()" name="lineshow" <?= $a?>>
                             <label class="form-check-label" for="eshow">顯示</label>
                         </div>
                     </span>
@@ -125,7 +143,6 @@
 
 <script>
 
-
 function save(){
     let data = new Object;
     data['id'] = document.querySelector("#profile_data").querySelector("#id").value;
@@ -133,7 +150,6 @@ function save(){
     data['name'] = document.querySelector("#profile_data").querySelector("#name").value;
     data['enname'] = document.querySelector("#profile_data").querySelector("#enname").value;
     data['tel'] = document.querySelector("#profile_data").querySelector("#tel").value;
-    // data['telshow'] = document.getElementsByName("telshow");
     data['email'] = document.querySelector("#profile_data").querySelector("#email").value;
     data['lineid'] = document.querySelector("#profile_data").querySelector("#lineid").value;
     data['live'] = document.querySelector("#profile_data").querySelector("#live").value;
@@ -150,6 +166,22 @@ function save(){
     })
 }
 
+function sh(){
+//  console.log( $("[name='lineshow']:checked").val());
+ let data = {};
+ data['id'] = <?= $row['id'] ?>;
+ data['lineshow'] = $("[name='lineshow']:checked").val()
+ data['telshow'] = $("[name='telshow']:checked").val()
+//  console.log(data);
+ $.post("api/profile.php",data,function(res){
+     console.log(res);
+    if(res>=1){
+        location.reload();
+    }else{
+        alert("顯示更新失敗");
+    }
+ })
+}
 
 </script>
 
