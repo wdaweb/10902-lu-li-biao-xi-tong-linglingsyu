@@ -43,6 +43,14 @@
                 <input type="text" id="enname" name="enname" class="form-control " placeholder="English name" value="<?= $row['enname'] ?>">
             </div>
 
+            <label class="w-100" for="bir">生日</label>
+            <div class="input-group input-group-sm  mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-pen"></i></span>
+                </div>
+                <input type="date" id="bir" name="bir" class="form-control " placeholder="Birthday" value="<?= $row['birthday'] ?>">
+            </div>
+
             <label class="w-100" for="tel">電話</label>
             <div class="input-group input-group-sm  mb-3">
                 <input type="text" id="tel" name="tel" class="form-control " placeholder="0912123456" value="<?= $row['tel'] ?>">
@@ -132,7 +140,7 @@
 
             <div class="form-group">
                 <label for="intr">簡介(50字)</label>
-                <textarea class="form-control" id="intr" name="intr" rows="3" maxlength="100"><?= $row['intr'] ?></textarea>
+                <textarea class="form-control" id="intr" name="intr" rows="3" maxlength="200"><?= $row['intr'] ?></textarea>
             </div>
             <div class="form-group">
                 <input type="submit" onclick="save()" value="提出">
@@ -148,6 +156,7 @@ function save(){
     data['id'] = document.querySelector("#profile_data").querySelector("#id").value;
     data['userid'] = document.querySelector("#profile_data").querySelector("#userid").value;
     data['name'] = document.querySelector("#profile_data").querySelector("#name").value;
+    data['birthday'] = document.querySelector("#profile_data").querySelector("#bir").value;
     data['enname'] = document.querySelector("#profile_data").querySelector("#enname").value;
     data['tel'] = document.querySelector("#profile_data").querySelector("#tel").value;
     data['email'] = document.querySelector("#profile_data").querySelector("#email").value;
