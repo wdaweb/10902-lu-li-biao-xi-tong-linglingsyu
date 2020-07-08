@@ -1,8 +1,9 @@
 <?php
 include_once "../base.php";
 
-$db = new DB("resume_picture");
-$row = $db->find($_POST['p_id']);
+$id = $_POST['p_id'];
+$db = new DB("resume_prot");
+$row = $db->find($id);
 unlink("../".$row["pic"]);
 $res = $db->del($id);
 if($res>=1){
