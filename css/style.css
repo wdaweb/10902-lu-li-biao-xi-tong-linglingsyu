@@ -181,51 +181,39 @@ body{
 }
 
 #portfolio .box{
-  width: 250px;
-  height: 220px;
-  border-radius: 15px;
+  height: 150px;
 }
 
 #portfolio .box a{
   display: inline-block;
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
-#portfolio .box a span{
-  display: inline-block;
+#portfolio .box img{
   width: 100%;
-  background-color: #010127;
-  line-height: 100%;
-  padding: 0.5rem 0.1rem;
+  height: 100%;
+  object-fit:cover;
+}
+
+#portfolio .box a:hover:before{
+  content:"點我看作品:)";
+  display: inline-block;
+  width: 50%;
+  padding:10px;
+  border-radius: 15px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.432);
+  color: #fff;
   text-align: center;
-  color:#ffffff;
-  font-size: 1rem;
-  transition: all 1s ease-in-out;
-  margin-top: 40%;
-  font-weight: bolder;
-  opacity: 0;
-
+  margin-left: 50%;
+  margin-top:63.5px;
+  transform: translate(-50%);
 }
 
-#portfolio .box1{
-  background:url(../img/portfolio/invoice.png) no-repeat;
-  background-size: cover;
-  transition: all 1s ease-in-out;
-}
-
-#portfolio .box1:hover{
-  filter:saturate(200%);
-}
-
-#portfolio .box2{
-  background:url(../img/portfolio/invoice.png) no-repeat;
-  background-size: cover;
-  transition: all 1s ease-in-out;
-}
-
-#portfolio .box2:hover{
-  filter:saturate(200%);
+#portfolio .card-body-bg{
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
 }
 
 #content::-webkit-scrollbar,#becontent::-webkit-scrollbar {

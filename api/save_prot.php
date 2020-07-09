@@ -16,7 +16,12 @@ include_once "../base.php";
 $db = new DB("resume_prot");
 $key = array_keys($_FILES);
 
-$data = [] ;
+if($_POST['id']){
+  $data = $db->find($_POST['id']);
+}else{
+  $data = [] ;
+}
+
 if (!empty($_FILES[$key[0]]["tmp_name"])) {
 
   switch ($_FILES[$key[0]]["type"]) {
@@ -31,22 +36,28 @@ if (!empty($_FILES[$key[0]]["tmp_name"])) {
       break;
   }
   if($_POST['id']){
-    $remove = $db->find($_POST['id']);
-    unlink("../".$remove['pic']);
+    unlink("../".$row['pic']);
   }
   $filename = date("Yndhis"). $extension;
   move_uploaded_file( $_FILES[$key[0]]['tmp_name'], "../img/" . $filename);
+  $data['pic'] =  'img/' . $filename;
 }
 
-$data = [
-  'id' => $_POST['id'],
-  'name' => $_POST['name'] ,
-  'pic' => 'img/' . $filename,
-  'userid'=>$_SESSION['userid'],
-  'legend'=>$_POST['legend'],
-  'link'=>$_POST['link'],
-  'type'=>$_POST['type']
-];
+$data['name'] = $_POST['name'];
+$data['userid'] = $_SESSION['userid'];
+$data['legend'] = $_POST['legend'];
+$data['link'] = $_POST['link'];
+$data['type'] = $_POST['type'];
+
+
+// $data = [
+//   'name' => $_POST['name'] ,
+//   'pic' => 'img/' . $filename,
+//   'userid'=>$_SESSION['userid'],
+//   'legend'=>$_POST['legend'],
+//   'link'=>$_POST['link'],
+//   'type'=>$_POST['type']
+// ];
 
 $res = $db->save($data);
 if($res>=1){

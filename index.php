@@ -12,6 +12,7 @@ $soft = new DB("resume_skillsoft");
 $study = new DB("resume_study");
 $user =  new DB("resume_user");
 $work = new DB("resume_work");
+$prot = new DB("resume_prot");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -238,12 +239,12 @@ $work = new DB("resume_work");
                         <div class="certificate mb-3">
                             <h5 class="mb-1"> <i class="fas fa-angle-right"></i> Certificate</h5>
                             <ul>
-                            <?php
+                                <?php
                                 $car = $cert->all(["userid" => 1]);
-                                foreach ($car as $ca){
-                            ?>
-                                    <li class="mb-2 pl-3"><?= $ca["name"].$ca["level"]; ?></li>
-                            <?php
+                                foreach ($car as $ca) {
+                                ?>
+                                    <li class="mb-2 pl-3"><?= $ca["name"] . $ca["level"]; ?></li>
+                                <?php
                                 }
                                 ?>
                             </ul>
@@ -251,22 +252,35 @@ $work = new DB("resume_work");
                     </div>
                     <div id="portfolio" class="mb-5">
                         <h1>Portfolio</h1>
-                        <div class="row mx-auto" style="width:99%">
-                            <div class="box box1" onmouseover="aa()" onmouseout="bb()"> <a href="#"><span>Calendar by
-                                        PHP</span></a></div>
-                            <div class="box box2 ml-5" onmouseover="cc()" onmouseout="dd()"> <a href="#"><span>Calendar by PHP</span></a></div>
+                        <div class="row mx-auto mt-3" style="width:99%">
+                            <?php
+                            $pro = $prot->all(["userid"=>1]);
+                            foreach ($pro as $pr){
+                            ?>
+                            <div class="col-6 ">
+                                <div class="card border border-danger">
+                                <div class="box"><a href="<?= $pr['link'] ?>" target="_balck" ><img src="<?= $pr['pic'] ?>" class="card-img-top" ></a></div>
+                                    <div class="card-body card-body-bg">
+                                        <p class="card-text"><h4 class="pro_title"><?= $pr['name'] ?></h4><?= nl2br($pr['legend']) ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                     <div id="self" class="mb-5">
                         <h1>Autobiography</h1>
                         <div class="row mx-auto" style="width:99%">
-                        <p>
-                            <?php
-                            $se = $self->find(["userid"=>1,"sh"=>1]);
-                            echo nl2br($se['text']);
-                            ?>
-                        </p>
-                            
+                            <p>
+                                <?php
+                                $se = $self->find(["userid" => 1, "sh" => 1]);
+                                echo nl2br($se['text']);
+                                ?>
+                            </p>
+
                         </div>
                     </div>
                 </div>
@@ -279,21 +293,7 @@ $work = new DB("resume_work");
     </div>
 
     <script>
-        function aa() {
-            document.getElementById("portfolio").getElementsByClassName("box1")[0].getElementsByTagName("span")[0].style = "opacity:1;"
-        }
 
-        function bb() {
-            document.getElementById("portfolio").getElementsByClassName("box1")[0].getElementsByTagName("span")[0].style = "opacity:0;"
-        }
-
-        function cc() {
-            document.getElementById("portfolio").getElementsByClassName("box2")[0].getElementsByTagName("span")[0].style = "opacity:1;"
-        }
-
-        function dd() {
-            document.getElementById("portfolio").getElementsByClassName("box2")[0].getElementsByTagName("span")[0].style = "opacity:0;"
-        }
     </script>
 </body>
 

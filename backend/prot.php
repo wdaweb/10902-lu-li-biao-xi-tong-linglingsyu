@@ -139,8 +139,8 @@
       cache: false,
       processData: false,
       success: function(res) {
-        console.log(res);
-        // location.reload();
+        // console.log(res);
+        location.reload();
       }
     });
   }
@@ -217,16 +217,23 @@
 
   function sh() {
     let data = {};
-    let arrid = new Array;
+    let arrid = new Array();
+    let arrsh = new Array();
+    let sh = $("[name='sh[]']:checked");
     let id = $("input[name='id[]']");
     for (let k = 0; k < id.length; k++) {
       arrid.push(id[k].value);
     }
+    for (let i = 0; i < sh.length; i++) {
+      arrsh.push(sh[i].value);
+    }
     data['id'] = arrid;
-    data['sh'] = $("[name='sh']:checked").val()
-    $.post("api/show_pic.php", data, function(res) {
+    data['sh'] = arrsh;
+    console.log(data);
+    $.post("api/show_prot.php", data, function(res) {
+      // console.log(res);
       if (res >= 1) {
-        alert("已更新顯示個人圖片");
+        alert("已更新顯示");
         location.reload();
       } else {
         alert("顯示更新失敗");
@@ -240,7 +247,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">新增作品集</h5>
+        <h5 class="modal-title" id="exampleModalLabel">更新作品集</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
