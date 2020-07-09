@@ -116,9 +116,8 @@
   function save_prot(e) {
     let prot = document.getElementById("prot");
     let prot2 = document.getElementById("prot2");
-    console.log(e);
+    // console.log(e);
     if (e == undefined) {
-      fileData.append("id","");
       fileData.append("name", $("#name").val());
       fileData.append("link", $("#link").val());
       fileData.append("legend", $("#legend").val());
@@ -131,7 +130,7 @@
       fileData.append("type", document.getElementById("type2").value);
 
     }
-    console.log(fileData);
+    // console.log(fileData);
     $.ajax({
       url: "api/save_prot.php",
       type: "POST",
@@ -210,7 +209,6 @@
   function ch() {
     document.getElementById("pic2").addEventListener("change", (e) => {
       let pic = e.target.files;
-      console.log(pic);
       fileData.append(pic[0].name, pic[0], );
       // console.log(fileData);
     })

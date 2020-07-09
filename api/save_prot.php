@@ -2,7 +2,7 @@
 include_once "../base.php";
 // if(!empty($_FILES)){
 //   print_r($_FILES);
-//   print_r($_POST);
+//   // print_r($_POST);
 // }else{
 //   echo 0;
 // }
@@ -12,16 +12,13 @@ include_once "../base.php";
 // }else{
 //   echo 0;
 // }
-$db = new DB("resume_prot");
 
+$db = new DB("resume_prot");
 $key = array_keys($_FILES);
-if(!empty($_POST['id'])){
-  $sourse = $db->find($_POST['id']);
-  if(!empty($sourse['pic'])){
-    unlink("../".$sourse['pic']);
-  }
-}
+
+$data = [] ;
 if (!empty($_FILES[$key[0]]["tmp_name"])) {
+
   switch ($_FILES[$key[0]]["type"]) {
     case "image/jpeg":
       $extension = ".jpg";
@@ -33,15 +30,18 @@ if (!empty($_FILES[$key[0]]["tmp_name"])) {
       $extension = ".gif";
       break;
   }
+  if($_POST['id']){
+    $remove = $db->find($_POST['id']);
+    unlink("../".$remove['pic']);
+  }
   $filename = date("Yndhis"). $extension;
   move_uploaded_file( $_FILES[$key[0]]['tmp_name'], "../img/" . $filename);
-  $data['pic'] = "'img/' . $filename";
 }
 
 $data = [
   'id' => $_POST['id'],
   'name' => $_POST['name'] ,
-  // 'pic' => 'img/' . $filename,
+  'pic' => 'img/' . $filename,
   'userid'=>$_SESSION['userid'],
   'legend'=>$_POST['legend'],
   'link'=>$_POST['link'],
