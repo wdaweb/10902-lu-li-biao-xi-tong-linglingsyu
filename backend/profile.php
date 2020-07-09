@@ -139,7 +139,7 @@
             </div>
 
             <div class="form-group">
-                <label for="intr">簡介(50字)</label>
+                <label for="intr">簡介(100字)</label>
                 <textarea class="form-control" id="intr" name="intr" rows="3" maxlength="200"><?= $row['intr'] ?></textarea>
             </div>
             <div class="form-group">
