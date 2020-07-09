@@ -43,7 +43,7 @@ $prot = new DB("resume_prot");
                         ?>
                         <img src="<?= $pics["path"] ?>" class="card-img-top img-fluid w-50 py-1">
                         <h1 class="text-center"><?= $pros["name"] ?><small><?= $pros["enname"] ?></small></h1>
-                        <p><?= $pros["intr"] ?></p>
+                        <p class="intr"><?= $pros["intr"] ?></p>
                     </div>
                     <div class="contact">
                         <h4>Contact me</h4>
@@ -161,9 +161,9 @@ $prot = new DB("resume_prot");
                                     foreach ($fro as $fo) {
                                     ?>
                                         <div class="col-2 ml-1 my-1"><?= $fo["name"]; ?></div>
-                                        <div class="col-9 pl-0 ">
-                                            <div class="progress" style="height: 0.4rem;">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:<?= $fo['level']; ?>%;height: 0.4rem"></div>
+                                        <div class="col-9 ml-3 ">
+                                            <div class="progress progress-bg" style="height: 0.4rem;" >
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width:<?= $fo['level']; ?>%;height: 0.4rem"></div>
                                             </div>
                                         </div>
                                     <?php
@@ -182,9 +182,9 @@ $prot = new DB("resume_prot");
                                     foreach ($bac as $ba) {
                                     ?>
                                         <div class="col-2 ml-1 my-1"><?= $ba["name"]; ?></div>
-                                        <div class="col-9 pl-0 ">
-                                            <div class="progress" style="height: 0.4rem;">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:<?= $ba['level']; ?>%;height: 0.4rem"></div>
+                                        <div class="col-9 ml-3 ">
+                                            <div class="progress progress-bg" style="height: 0.4rem;">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width:<?= $ba['level']; ?>%;height: 0.4rem"></div>
                                             </div>
                                         </div>
                                     <?php
@@ -203,9 +203,9 @@ $prot = new DB("resume_prot");
                                     foreach ($sof as $so) {
                                     ?>
                                         <div class="col-2 ml-1 my-1"><?= $so["name"]; ?></div>
-                                        <div class="col-9 pl-0 ">
-                                            <div class="progress" style="height: 0.4rem;">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:<?= $so['level']; ?>%;height: 0.4rem"></div>
+                                        <div class="col-9 ml-3">
+                                            <div class="progress progress-bg" style="height: 0.4rem;">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width:<?= $so['level']; ?>%;height: 0.4rem"></div>
                                             </div>
                                         </div>
                                     <?php
@@ -224,9 +224,9 @@ $prot = new DB("resume_prot");
                                     foreach ($lang as $la) {
                                     ?>
                                         <div class="col-2 ml-1 my-1"><?= $la["name"]; ?></div>
-                                        <div class="col-9 pl-0 ">
-                                            <div class="progress" style="height: 0.4rem;">
-                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width:<?= $la['level']; ?>%;height: 0.4rem"></div>
+                                        <div class="col-9 ml-3 ">
+                                            <div class="progress progress-bg" style="height: 0.4rem;">
+                                                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style="width:<?= $la['level']; ?>%;height: 0.4rem"></div>
                                             </div>
                                         </div>
                                     <?php
