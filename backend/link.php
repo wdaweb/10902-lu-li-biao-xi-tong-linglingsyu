@@ -130,7 +130,7 @@
     }
 
     function del_link(id) {
-    $.post("../api/del_link.php", {
+    $.post("api/del_link.php", {
       id
     }, function(res) {
       if (res == 1) {

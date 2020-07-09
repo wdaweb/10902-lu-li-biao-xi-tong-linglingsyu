@@ -76,7 +76,7 @@
 <script>
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
-    $.get("../api/read_software.php", {
+    $.get("api/read_software.php", {
       id
     }, function(res) {
       let result = JSON.parse(res);
@@ -104,7 +104,7 @@
   })
 
   function del_software(id) {
-    $.post("../api/del_software.php", {
+    $.post("api/del_software.php", {
       id
     }, function(res) {
       if (res == 1) {

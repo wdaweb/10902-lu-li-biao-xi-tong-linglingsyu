@@ -29,7 +29,7 @@
         echo '<td width="20%">' . $row["legend"] . '</td>';
         echo '<td width="3%">' . $row["type"] . '</td>';
         echo '<td width="7%" height="150px"> <div class="form-check"><input class="form-check-input" type="checkbox" onclick="sh()" name="sh[]" id="sh' . $row["id"] . '" value="' . $row["id"] . '"' . $chk . '><label class="form-check-label" for="' . 'sh' . $row["id"] . '"></label> </div></td>';
-        echo '<td width="20%" height="150px"><button class="btn btn-warning ubtn" data-toggle="modal" id="' . $row['id'] . '" data-target="#exampleModa2">更新</button><button class="ml-1 btn btn-danger" onclick="del_prot(' . $row["id"] . ')">刪除</button></td>';
+        echo '<td width="20%" height="150px"><button class="btn btn-warning ubtn btn-sm" data-toggle="modal" id="' . $row['id'] . '" data-target="#exampleModa2">更新</button><button class="ml-1 btn btn-danger btn-sm" onclick="del_prot(' . $row["id"] . ')">刪除</button></td>';
         echo '<input type="hidden" '  . ' name="id[]" value="' . $row['id'] . '">';
         echo "</tr>";
       }
@@ -162,7 +162,7 @@
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
     // console.log(id);
-    $.get("../api/read_prot.php", {
+    $.get("api/read_prot.php", {
       id
     }, function(res) {
       let result = JSON.parse(res);

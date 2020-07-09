@@ -273,7 +273,7 @@ $prot = new DB("resume_prot");
                     </div>
                     <div id="self" class="mb-5">
                         <h1>Autobiography</h1>
-                        <div class="row mx-auto" style="width:99%">
+                        <div class="row mx-auto px-3" style="width:99%">
                             <p>
                                 <?php
                                 $se = $self->find(["userid" => 1, "sh" => 1]);

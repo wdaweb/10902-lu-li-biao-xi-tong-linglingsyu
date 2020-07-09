@@ -77,7 +77,7 @@
 <script>
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
-    $.get("../api/read_cert.php", {
+    $.get("api/read_cert.php", {
       id
     }, function(res) {
       let result = JSON.parse(res);
@@ -106,7 +106,7 @@
   })
 
   function del_cert(id) {
-    $.post("../api/del_cert.php", {
+    $.post("api/del_cert.php", {
       id
     }, function(res) {
       if (res == 1) {

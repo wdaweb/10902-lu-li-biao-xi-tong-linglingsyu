@@ -80,7 +80,7 @@
 <script>
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
-    $.get("../api/read_self.php", {
+    $.get("api/read_self.php", {
       id
     }, function(res) {
       let result = JSON.parse(res);
@@ -105,7 +105,7 @@
   })
 
   function del_self(id) {
-    $.post("../api/del_self.php", {
+    $.post("api/del_self.php", {
       id
     }, function(res) {
       if (res == 1) {

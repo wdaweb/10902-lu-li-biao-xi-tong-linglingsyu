@@ -142,9 +142,9 @@
                 <label for="intr">簡介(100字)</label>
                 <textarea class="form-control" id="intr" name="intr" rows="3" maxlength="200"><?= $row['intr'] ?></textarea>
             </div>
-            <div class="form-group">
-                <input type="submit" onclick="save()" value="提出">
-                <input type="reset"  value="重寫">
+            <div class="form-group d-flex justify-content-center align-items-center">
+                <input class="mx-2 btn btn-warning" type="reset"  value="重寫">
+                <input class="mx-2 btn btn-primary" type="submit" onclick="save()" value="提出">
             </div>
         </form>
     </div>

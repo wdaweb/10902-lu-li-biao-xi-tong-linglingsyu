@@ -170,7 +170,7 @@
 <script>
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
-    $.get("../api/read_study.php", {
+    $.get("api/read_study.php", {
       id
     }, function(res) {
       let result = JSON.parse(res);
@@ -271,7 +271,7 @@
   })
 
   function del_study(id){
-    $.post("../api/del_study.php",{id},function(res){
+    $.post("api/del_study.php",{id},function(res){
       if(res == 1){
         alert("刪除成功");
         location.reload();

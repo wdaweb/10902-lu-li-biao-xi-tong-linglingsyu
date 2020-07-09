@@ -76,7 +76,7 @@
 <script>
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
-    $.get("../api/read_lan.php", {
+    $.get("api/read_lan.php", {
       id
     }, function(res) {
       let result = JSON.parse(res);
@@ -104,7 +104,7 @@
   })
 
   function del_lan(id) {
-    $.post("../api/del_lan.php", {
+    $.post("api/del_lan.php", {
       id
     }, function(res) {
       if (res == 1) {

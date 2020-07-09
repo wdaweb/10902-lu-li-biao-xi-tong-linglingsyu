@@ -25,6 +25,7 @@
         <h1 class="mb-3 mt-5">歡迎，<?= $_SESSION['username'] ?></h1>
         <div class="btn-group-vertical ">
           <button type="button" class="btn" onclick="location.href='?do=profile'">個人資料管理</button>
+          <button type="button" class="btn" onclick="location.href='?do=condition'">求職條件管理</button>
           <button type="button" class="btn" onclick="location.href='?do=picture'">個人圖片管理</button>
           <button type="button" class="btn" onclick="location.href='?do=link'">個人連結管理</button>
           <button type="button" class="btn" onclick="location.href='?do=study'">個人學歷管理</button>

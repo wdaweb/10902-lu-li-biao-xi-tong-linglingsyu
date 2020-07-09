@@ -38,7 +38,7 @@
         </td>
         <td>
           <button class="btn btn-warning btn-sm  ubtn" data-toggle="modal" data-target="#Modal2" id="<?= $row['id'] ?>">更新
-          </button><button class="btn btn-danger btn-sm " onclick="del_work(<?= $row['id'] ?>)">刪除</button>
+          </button><button class="ml-1 btn btn-danger btn-sm " onclick="del_work(<?= $row['id'] ?>)">刪除</button>
         </td>
     </tr>
   <?php  }  ?>
@@ -156,7 +156,7 @@
 <script>
   $(".ubtn").on("click", function() {
     const id = $(this).attr("id");
-    $.get("../api/read_work.php", {id}, function(res) {
+    $.get("api/read_work.php", {id}, function(res) {
       let result = JSON.parse(res);
       let chk = (result["inwork"] == "true") ?　"checked" : "" ;
       // let dis = (result["inwork"] == "在職") ?　"disabled='disabled'" : "" ;
@@ -242,7 +242,7 @@
   })
 
   function del_work(id) {
-    $.post("../api/del_work.php", {
+    $.post("api/del_work.php", {
       id
     }, function(res) {
       if (res == 1) {
