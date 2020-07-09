@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2020-07-07 10:37:22
+-- 產生時間： 2020-07-09 10:43:00
 -- 伺服器版本： 10.4.11-MariaDB
 -- PHP 版本： 7.4.6
 
@@ -63,8 +63,9 @@ CREATE TABLE `resume_picture` (
 --
 
 INSERT INTO `resume_picture` (`id`, `userid`, `name`, `path`, `sh`) VALUES
-(13, 1, '2020702052527.jpg', 'img/2020702052527.jpg', '1'),
-(14, 1, '2020707091645.png', 'img/2020707091645.png', '1');
+(13, 1, '2020702052527.jpg', 'img/2020702052527.jpg', '0'),
+(14, 1, '2020707091645.png', 'img/2020707091645.png', '0'),
+(15, 1, '2020709075258.png', 'img/2020709075258.png', '1');
 
 -- --------------------------------------------------------
 
@@ -77,21 +78,48 @@ CREATE TABLE `resume_profile` (
   `userid` int(10) UNSIGNED NOT NULL,
   `name` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `enname` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `birthday` date NOT NULL,
   `tel` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telshow` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `live` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lineid` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lineshow` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `intr` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `intr` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- 傾印資料表的資料 `resume_profile`
 --
 
-INSERT INTO `resume_profile` (`id`, `userid`, `name`, `enname`, `tel`, `telshow`, `email`, `live`, `lineid`, `lineshow`, `intr`) VALUES
-(1, 1, '許瑞玲', 'Elsa Syu', '0955335369', '1', 'zzxcv741@hotmail.com', '桃園市', 't520131412', '1', '你好');
+INSERT INTO `resume_profile` (`id`, `userid`, `name`, `enname`, `birthday`, `tel`, `telshow`, `email`, `live`, `lineid`, `lineshow`, `intr`) VALUES
+(1, 1, '許瑞玲', 'Elsa Syu', '1988-11-26', '0955335369', '1', 'zzxcv741@hotmail.com', '桃園市', 't520131412', '1', '201402月初~201909月底在食品工廠擔任業務助理/客服/會計助理，想要轉職為前端/後端/全端網頁工程師故離職開始學習，技術努力精進中～！喜歡聽日本、華語、粵語抒情歌、沒事對PTT顆顆笑、看Youtube學些網頁技術、也很喜歡到日本自由行，更享受規劃旅程的過程，有同樣愛好者歡迎交流：）');
+
+-- --------------------------------------------------------
+
+--
+-- 資料表結構 `resume_prot`
+--
+
+CREATE TABLE `resume_prot` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `userid` int(11) NOT NULL,
+  `name` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pic` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `link` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `legend` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sh` int(1) NOT NULL DEFAULT 1,
+  `type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '1.PHP 2.JS/JQ 3.BS 4.AI/PS 5.laravel 6.vue'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `resume_prot`
+--
+
+INSERT INTO `resume_prot` (`id`, `userid`, `name`, `pic`, `link`, `legend`, `sh`, `type`) VALUES
+(1, 1, 'Calendar 萬年曆', 'img/2020709075657.png', 'http://220.128.133.15/s1090221/calendar/index.php', '使用PHP', 1, '1'),
+(2, 1, '發票對獎系統', 'img/2020709080040.png', 'http://220.128.133.15/s1090221/invoice/index.php', '使用PHP+MySQL', 1, '1'),
+(16, 1, 'afds', '', 'afsdf', 'asdfaf', 1, '1');
 
 -- --------------------------------------------------------
 
@@ -319,6 +347,12 @@ ALTER TABLE `resume_profile`
   ADD PRIMARY KEY (`id`);
 
 --
+-- 資料表索引 `resume_prot`
+--
+ALTER TABLE `resume_prot`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- 資料表索引 `resume_self`
 --
 ALTER TABLE `resume_self`
@@ -386,13 +420,19 @@ ALTER TABLE `resume_link`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_picture`
 --
 ALTER TABLE `resume_picture`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_profile`
 --
 ALTER TABLE `resume_profile`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- 使用資料表自動遞增(AUTO_INCREMENT) `resume_prot`
+--
+ALTER TABLE `resume_prot`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `resume_self`
