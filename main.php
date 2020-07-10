@@ -108,10 +108,9 @@
     function save_work(e) {
       let work = document.getElementById("work");
       let work2 = document.getElementById("work2");
-      let inwork = (document.getElementById("inwork").checked)?1:0;
-      let inwork2 = (document.getElementById("inwork2").checked)?1:0;
       let data = new Object;
       if (e == undefined) {
+      let inwork = (document.getElementById("inwork").checked)?1:0;
       data['userid'] = <?= $_SESSION['userid'] ?>;
       data['com'] = work.com.value;
       data['pos'] = work.pos.value;
@@ -122,6 +121,7 @@
       data['e_month'] = work.e_month.value;
       data['inwork'] = document.getElementById("inwork").checked;
     }else{
+      let inwork2 = (document.getElementById("inwork2").checked)?1:0;
       data['id'] = e;
       data['userid'] = <?= $_SESSION['userid'] ?>;
       data['com'] = work2.com.value;

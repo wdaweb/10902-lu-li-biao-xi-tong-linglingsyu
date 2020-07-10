@@ -13,6 +13,7 @@ $study = new DB("resume_study");
 $user =  new DB("resume_user");
 $work = new DB("resume_work");
 $prot = new DB("resume_prot");
+$cond = new DB("resume_condition")
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,29 +93,39 @@ $prot = new DB("resume_prot");
 
             <div id="content" class="col-8 px-0">
                 <div class="px-4 pt-3">
-                    <div id="About" class="mb-5">
-                        <h1>ABOUT ME</h1>
+                    <div id="About" class="mb-4">
+                        <h1>Conditions</h1>
                         <table class="table table-sm table-borderless ml-2">
+                            <?php 
+                                $con = $cond->find(["userid"=>1]);
+                                $date = ["","隨時可上班","兩週內","一個月內"];
+                                $sta = ["","積極求職中(待業中)","想要了解新的工作機會(在職中)","目前沒有就業的計畫"];
+                                ?>
                             <tbody>
                                 <tr>
-                                    <th>生日</th>
-                                    <td><?= $pros["birthday"] ?></td>
+                                    <th>希望職務</th>
+                                    <td><?= $con["pos"] ?></td>
                                 </tr>
                                 <tr>
-                                    <th>現居住地</th>
-                                    <td><?= $pros["live"] ?></td>
+                                    <th>希望待遇</th>
+                                    <td><?= $con["pay"] ?></td>
                                 </tr>
                                 <tr>
-                                    <th>欲應徵職位</th>
-                                    <td>前端/後端/全端網頁工程師</td>
+                                    <th>求職狀態</th>
+                                    <td><?= $sta[$con["status"]] ?></td>
                                 </tr>
                                 <tr>
                                     <th>可上班日期</th>
-                                    <td>隨時可上班</td>
+                                    <td><?= $date[$con["date"]] ?></td>
                                 </tr>
                                 <tr>
                                     <th>希望上班地點</th>
-                                    <td>台北市</td>
+                                    <td><?= $con["location"] ?></td>
+                                </tr>
+                                <tr>
+                                    <th>聯絡時間</th>
+                                    <td><?= $con["time"] ?><small class="d-block">LINE可隨時聯絡^_^</small></td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -252,12 +263,12 @@ $prot = new DB("resume_prot");
                     </div>
                     <div id="portfolio" class="mb-5">
                         <h1>Portfolio</h1>
-                        <div class="row mx-auto mt-3" style="width:99%">
+                        <div class="row mx-auto" style="width:99%">
                             <?php
                             $pro = $prot->all(["userid"=>1]);
                             foreach ($pro as $pr){
                             ?>
-                            <div class="col-6 ">
+                            <div class="col-6 mt-3">
                                 <div class="card border border-danger">
                                 <div class="box"><a href="<?= $pr['link'] ?>" target="_balck" ><img src="<?= $pr['pic'] ?>" class="card-img-top" ></a></div>
                                     <div class="card-body card-body-bg">

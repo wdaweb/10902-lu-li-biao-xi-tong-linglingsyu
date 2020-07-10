@@ -11,7 +11,7 @@
   <tbody>
     <tr>
       <?php
-      $db = new DB("resume_SkillFront");
+      $db = new DB("resume_skillfront");
       $rows = $db->all(["userid" => $userid]);
       foreach ($rows as $key => $row) {
         echo "<td>" . ($key + 1) . "</td>";

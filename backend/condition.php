@@ -1,13 +1,20 @@
 <?php
 include_once "base.php";
 $userid = $_SESSION['userid'];
-$db = new DB("resume_profile");
+$db = new DB("resume_condition");
 $row = $db->find($userid);
 
 if (empty($row)) {
-  foreach ($row as $val) {
-    $val = "";
-  }
+  $row['id'] = "";
+  $row['pos'] = "";
+  $row['pay'] = "" ;
+  $row['status'] =  "" ;
+  $row['date'] = "";
+  $row['time'] = "" ;
+  $row['location'] = "" ;
+  
+
+
 }
 
 
@@ -15,10 +22,9 @@ if (empty($row)) {
 
 <div id="backend_condition">
   <h3>履歷表管理後台 - 求職條件</h3>
-  <form id="condition">
     <input type="hidden" name="id" id="id" value="<?= $row['id'] ?>">
     <input type="hidden" name="userid" id="userid" value="<?= $userid ?>">
-    <label class="w-100" for="pos">希望職務名稱</label>
+    <label class="w-100 mt-3" for="pos">希望職務名稱</label>
     <div class="input-group input-group-sm  mb-3">
       <input type="text" id="pos" name="pos" class="form-control " value="<?= $row['pos'] ?>">
     </div>
@@ -39,10 +45,10 @@ if (empty($row)) {
 
     <label class="w-100" for="date">可上班日期</label>
     <div class="input-group input-group-sm  mb-3">
-      <select class="form-control" id="status" name="status" value="<?= $row['status'] ?>">
-        <option value="1" <?= $row['status'] == "1" ? " selected " : ""  ?>>隨時可上班</option>
-        <option value="2" <?= $row['status'] == "2" ? " selected " : ""  ?>>兩週內</option>
-        <option value="0" <?= $row['status'] == "0" ? " selected " : ""  ?>>一個月內</option>
+      <select class="form-control" id="date" name="date" value="<?= $row['date'] ?>">
+        <option value="1" <?= $row['date'] == "1" ? " selected " : ""  ?>>隨時可上班</option>
+        <option value="2" <?= $row['date'] == "2" ? " selected " : ""  ?>>兩週內</option>
+        <option value="0" <?= $row['date'] == "0" ? " selected " : ""  ?>>一個月內</option>
       </select>
     </div>
 
@@ -81,30 +87,29 @@ if (empty($row)) {
 
     <div class="form-group d-flex justify-content-center align-items-center">
       <input class="mx-2 btn btn-warning " type="reset" value="重寫">
-      <input class="mx-2 btn btn-primary " type="submit" onclick="save_condition()" value="提出">
+      <input class="mx-2 btn btn-primary " type="submit" onclick="save_condition()" value="更新">
     </div>
-  </form>
 </div>
 
 <script>
   function save_condition() {
     let data = new Object;
-    data['id'] = document.querySelector("#condition").querySelector("#id").value;
-    data['userid'] = document.querySelector("#condition").querySelector("#userid").value;
-    data['pos'] = document.querySelector("#condition").querySelector("#pos").value;
-    data['pay'] = document.querySelector("#condition").querySelector("#pay").value;
-    data['status'] = document.querySelector("#condition").querySelector("#status").value;
-    data['date'] = document.querySelector("#condition").querySelector("#date").value;
-    data['time'] = document.querySelector("#condition").querySelector("#time").value;
-    data['lineid'] = document.querySelector("#condition").querySelector("#lineid").value;
-    data['location'] = document.querySelector("#condition").querySelector("#location").value;
+    data['id'] = document.querySelector("#id").value;
+    data['userid'] = document.querySelector("#userid").value;
+    data['pos'] = document.querySelector("#pos").value;
+    data['pay'] = document.querySelector("#pay").value;
+    data['status'] = document.querySelector("#status").value;
+    data['date'] = document.querySelector("#date").value;
+    data['time'] = document.querySelector("#time").value;
+    data['location'] = document.querySelector("#location").value;
+    // console.log(data);
     $.post("api/condition.php", data, function(res) {
+      // console.log(res);
       if (res >= 1) {
         // console.log(res);
         alert("更新成功!");
         location.reload();
       } else {
-        // console.log(res);
         alert("更動失敗!");
       }
     })

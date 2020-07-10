@@ -87,7 +87,8 @@
       contentType: false,
       cache: false,
       processData: false,
-      success: function(res) {  
+      success: function(res) {
+        //console.log(res)  
         location.reload();
       }
     });
